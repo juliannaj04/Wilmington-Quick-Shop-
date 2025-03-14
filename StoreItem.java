@@ -21,12 +21,13 @@ public class StoreItem {
      * @param name the name of the item (i.e. apple, chair, sweater)
      * @param category the category the item belongs in (i.e. fruit, furniture, clothing)
      * @param price the price of the item
+     * @param quantity the quantity of the item
      */
-    public StoreItem(String name, String category, double price) {
+    public StoreItem(String name, String category, double price, int quantity) {
        this.name = name;
        this.category = category;
        this.price = price;
-       this.quantity = calculateQuantity();
+       this.quantity = quantity;
 
    }
 
@@ -87,13 +88,11 @@ public class StoreItem {
        this.price = price;
     }
 
-    /**
-     * Calculates the number of items in a category (i.e 10 fruits, 15 cleaning supplies, 4 TVS)
-     * @param
-     * @return the quantity of items as an integer
-     */
-    private static int calculateQuantity() {
-// write code here for calculating the number of items in a category
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+
     }
+
+
 }
 

@@ -18,10 +18,11 @@ class HouseholdItem extends StoreItem {
      * @param name String name
      * @param category String category
      * @param price double price
+     * @param quantity int quantity
      * @param roomType - what room(s) the item is associated with (i.e. kitchen, bathroom, living room)
      */
-    public HouseholdItem(String name, String category, double price, String roomType) {
-        super(name, category, price);
+    public HouseholdItem(String name, String category, double price, int quantity, String roomType) {
+        super(name, category, price, quantity);
         this.roomType = roomType;
     }
 
@@ -67,11 +68,12 @@ class CleaningSupply extends HouseholdItem {
      * @param name String name
      * @param category String category
      * @param price double price
+     * @param quantity int quantity
      * @param roomType String roomType
      * @param isToxic boolean isToxic
      */
-    public CleaningSupply(String name, String category, double price, String roomType, boolean isToxic) {
-        super(name, category, price, roomType);
+    public CleaningSupply(String name, String category, double price, int quantity, String roomType, boolean isToxic) {
+        super(name, category, price, quantity, roomType);
         this.isToxic = isToxic;
 
     }
@@ -119,12 +121,13 @@ class Furniture extends HouseholdItem {
      * @param name String name
      * @param category String category
      * @param price double price
+     * @param quantity int quantity
      * @param roomType String roomType
      * @param color String color
      * @param material String material (i.e. wood, plastic, cloth, metal)
      */
-    public Furniture(String name, String category, double price, String roomType, String color, String material) {
-        super(name, category, price, roomType);
+    public Furniture(String name, String category, double price, int quantity, String roomType, String color, String material) {
+        super(name, category, price, quantity, roomType);
         this.color = color;
         this.material = material;
 
