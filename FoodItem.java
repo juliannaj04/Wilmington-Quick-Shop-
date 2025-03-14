@@ -93,7 +93,6 @@ class Fruit extends FoodItem {
     public Fruit(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin, String fruitGroup) {
         super(name, category, price, quantity, expirationDate, countryOfOrigin);
         this.fruitGroup = fruitGroup;
-
     }
 
     /**
