@@ -152,6 +152,9 @@ public class WQSAkinsJohnstonSlapshak {
         }
 
     }
+    /**
+     * Decreases quantity of FoodItem
+     */
     public static void sellFoodItem(){
         System.out.println("Which food item would you like to sell? (Apple, Frosted Flakes, Carrot): ");
         String item = scanner.nextLine();
@@ -225,6 +228,9 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
+    /**
+     * Decreases quantity of HouseholdItem
+     */
     public static void sellHouseholdItem(){
         System.out.println("Which household item would you like to add more of? (Laundry Detergent, Chair): ");
         String item = scanner.nextLine();
@@ -308,6 +314,9 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
+    /**
+     * Decreases quantity of ElectronicItem
+     */
     public static void sellElectronicItem(){
         System.out.println("Which electronics item would you like to sell? (MacBook, iPhone, Roku TV): ");
         String item = scanner.nextLine();
@@ -390,6 +399,9 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
+    /**
+     * Decreases quantity of ClothingItem
+     */
     public static void sellClothingItem(){
         System.out.println("Which clothing item would you like to add more of? (Outerwear, Shirt, Shoe): ");
         String item = scanner.nextLine();
@@ -408,9 +420,6 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
-
-
-
 
         public static void main(String[] args) {
 
@@ -440,11 +449,32 @@ public class WQSAkinsJohnstonSlapshak {
                 }
                 // DISPLAY RETURN POLICY HERE
 
-                // SELL
+
+            } else if (action.equals("sell")) {
+                System.out.println("What type of item would you like to sell? (food/household/electronics/clothing)");
+                String category = scanner.nextLine();
+
+                displayInventory(category);
+
+                // call appropriate method based on category
+                if (category.equals("food")) {
+                    sellFoodItem();
+                } else if (category.equals("household")) {
+                    sellHouseholdItem();
+                } else if (category.equals("electronics")) {
+                    sellElectronicItem();
+                } else if (category.equals("clothing")) {
+                    sellClothingItem();
+                } else {
+                    System.out.println("Invalid category");
+                }
+            }
+
+            // SELL
 
 
                 //QUIT
-            }
+
         }
 
 
