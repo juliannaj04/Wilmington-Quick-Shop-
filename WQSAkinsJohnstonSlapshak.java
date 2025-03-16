@@ -93,7 +93,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Adds new FoodItem to the inventory based on subclass - Fruit, Vegetable, ShelfStable
      */
     public static void addFoodItem() {
-        System.out.print("Would you like to add a new item or more of an existing item? (new/existing): ");
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
@@ -111,81 +111,97 @@ public class WQSAkinsJohnstonSlapshak {
             }
 
         } else if (choice.equals("new")) {
-            System.out.print("Enter the name of the new food item you would like to add: ");
+            System.out.println("Enter the name of the new food item you would like to add: ");
             String name = scanner.nextLine();
-            System.out.print("Enter the price of " + name + ": ");
+            System.out.println("Enter the price of" + name + ": ");
             double price = scanner.nextDouble();
-            System.out.print("Enter the quantity of " + name + ": ");
+            System.out.println("Enter the quantity of" + name + ": ");
             int quantity = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Enter the expiration date of " + name + ": ");
+            System.out.println("Enter the expiration date of" + name + ": ");
             String expirationDate = scanner.nextLine();
-            System.out.print("Enter the country of origin of " + name + ": ");
+            System.out.println("Enter the country of origin of" + name + ": ");
             String countryOfOrigin = scanner.nextLine();
 
-            System.out.print("What category of food item is this? (Fruit/Vegetable/Shelf Stable): ");
+            System.out.println("What category of food item is this? (Fruit/Vegetable/Shelf Stable): ");
             String foodCategory = scanner.nextLine();
 
             switch (foodCategory) {
                 case "Fruit":
-                   System.out.println("Enter the fruit group (i.e. Pome, Citrus, Berry): ");
-                   String fruitGroup = scanner.nextLine();
-                   Fruit newFruit = new Fruit(name, "Fruit", price, quantity, expirationDate, countryOfOrigin, fruitGroup); // create new Fruit object based on user input
-                   addInventory(newFruit);
-                   break;
+                    System.out.println("Enter the fruit group (i.e. Pome, Citrus, Berry): ");
+                    String fruitGroup = scanner.nextLine();
+                    Fruit newFruit = new Fruit(name, "Fruit", price, quantity, expirationDate, countryOfOrigin, fruitGroup); // create new Fruit object based on user input
+                    addInventory(newFruit);
+                    break;
                 case "Vegetable":
-                    System.out.print("Enter the vegetable group (i.e. Root, Starchy, Cruciferous): ");
+                    System.out.println("Enter the vegetable group (i.e. Root, Starchy, Cruciferous): ");
                     String vegetableGroup = scanner.nextLine();
                     Vegetable newVegetable = new Vegetable(name, "Vegetable", price, quantity, expirationDate, countryOfOrigin, vegetableGroup); // create new Vegetable object based on user input
                     addInventory(newVegetable);
                     break;
                 case "Shelf Stable":
-                    System.out.print("Enter the packaging type: ");
+                    System.out.println("Enter the packaging type: ");
                     String packagingType = scanner.nextLine();
                     ShelfStable newShelfStable = new ShelfStable(name, "Shelf Stable", price, quantity, expirationDate, countryOfOrigin, packagingType); // create new ShelfStable object based on user input
                     addInventory(newShelfStable);
                     break;
                 default:
-                    System.out.print("Invalid food category");
+                    System.out.println("Invalid food category");
                     break;
             }
 
         }
 
     }
+    public static void sellFoodItem(){
+        System.out.println("Which food item would you like to sell? (Apple, Frosted Flakes, Carrot): ");
+        String item = scanner.nextLine();
 
+        for (FoodItem food: foods) { // for each food in the foods array
+            if (food.getName().equals(item)) {
+                System.out.println("How many" + item + " would you like to remove?");
+                int amount = scanner.nextInt();
+                food.setQuantity(food.getQuantity() - amount); //decrease quantity
+                if (food.getQuantity() < 0) { //error check
+                    System.out.println("Error - Negative Quantity not possible - Changes reverted");
+                    food.setQuantity(food.getQuantity() + amount); //revert quantity change
+                } else {
+                    System.out.println("Updated quantity of" + item + ": " + food.getQuantity()); // display updated quantity
+                }
+            }
+        }
+    }
     /**
      * Helper method for addInventory
      * Adds new HouseHold item to the inventory based on subclass - Cleaning Supply, Furniture
      */
     public static void addHouseholdItem() {
-        System.out.print("Would you like to add a new item or more of an existing item? (new/existing): ");
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which household item would you like to add more of? (Laundry Detergent, Chair): ");
+            System.out.println("Which household item would you like to add more of? (Laundry Detergent, Chair): ");
             String item = scanner.nextLine();
 
             for (HouseholdItem householdItem: households) { // for each household item in the households array
                 if (householdItem.getName().equals(item)) {
-                    System.out.print("How many" + item + " would you like to add?");
+                    System.out.println("How many" + item + " would you like to add?");
                     int amount = scanner.nextInt();
                     householdItem.setQuantity(householdItem.getQuantity() + amount);
-                    System.out.print("Updated quantity of" + item + ": " + householdItem.getQuantity()); // increase quantity
+                    System.out.println("Updated quantity of" + item + ": " + householdItem.getQuantity()); // increase quantity
 
                 }
             }
 
         } else if (choice.equals("new")) {
-            System.out.print("Enter the name of the new household item you would like to add: ");
+            System.out.println("Enter the name of the new household item you would like to add: ");
             String name = scanner.nextLine();
-            System.out.print("Enter the price of " + name + ": ");
+            System.out.println("Enter the price of" + name + ": ");
             double price = scanner.nextDouble();
-            System.out.print("Enter the quantity of " + name + ": ");
+            System.out.println("Enter the quantity of" + name + ": ");
             int quantity = scanner.nextInt();
-            System.out.print("Enter the room associated with " + name + ": ");
+            System.out.println("Enter the room associated with" + name + ": ");
             String roomType = scanner.nextLine();
-            scanner.nextLine();
+            System.out.println("Is" + name + "toxic? (true/false): ");
 
             System.out.println("What category of household item is this? (Cleaning Supply/ Furniture): ");
             String householdItemCategory = scanner.nextLine();
@@ -203,14 +219,31 @@ public class WQSAkinsJohnstonSlapshak {
                     System.out.println("Enter the color: ");
                     String color = scanner.nextLine();
                     Furniture newFurniture = new Furniture(name, "Furniture", price, quantity, roomType, color, material);
-                    addInventory(newFurniture);
                     break;
                 default:
                     System.out.println("Invalid household item category");
             }
         }
     }
+    public static void sellHouseholdItem(){
+        System.out.println("Which household item would you like to add more of? (Laundry Detergent, Chair): ");
+        String item = scanner.nextLine();
 
+        for (HouseholdItem householdItem: households) { // for each household item in the households array
+            if (householdItem.getName().equals(item)) {
+                System.out.println("How many" + item + " would you like to remove?");
+                int amount = scanner.nextInt();
+                householdItem.setQuantity(householdItem.getQuantity() - amount); //decrease quantity
+                if (householdItem.getQuantity() < 0) { //error check
+                    System.out.println("Error - Negative Quantity not possible");
+                    householdItem.setQuantity(householdItem.getQuantity() + amount); //revert quantity change
+                } else {
+                    System.out.println("Updated quantity of" + item + ": " + householdItem.getQuantity()); //display updated quantity
+                }
+
+            }
+        }
+    }
     /**
      * Helper method for addInventory
      * Adds new electronics item to the inventory based on subclass - TV, Phone, Laptop
@@ -275,7 +308,24 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
+    public static void sellElectronicItem(){
+        System.out.println("Which electronics item would you like to sell? (MacBook, iPhone, Roku TV): ");
+        String item = scanner.nextLine();
 
+        for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
+            if (electronicsItem.getName().equals(item)) {
+                System.out.println("How many" + item + " would you like to remove?");
+                int amount = scanner.nextInt();
+                electronicsItem.setQuantity(electronicsItem.getQuantity() - amount); //update quantity
+                if (electronicsItem.getQuantity() < 0) { //error check
+                    System.out.println("Error - Negative Quantity not possible");
+                    electronicsItem.setQuantity(electronicsItem.getQuantity() + amount); //revert quantity change
+                } else {
+                    System.out.println("Updated quantity of" + item + ": " + electronicsItem.getQuantity()); //display updated quantity
+                }
+            }
+        }
+    }
     /**
      * Helper method for addInventory
      * Adds new clothing item to the inventory based on subclass - Outerwear, Shirt, Shoe
@@ -301,19 +351,19 @@ public class WQSAkinsJohnstonSlapshak {
         } else if (choice.equals("new")) {
             System.out.println("Enter the name of the new clothing item you would like to add: ");
             String name = scanner.nextLine();
-            System.out.println("Enter the price of " + name + ": ");
+            System.out.println("Enter the price of" + name + ": ");
             double price = scanner.nextDouble();
-            System.out.println("Enter the quantity of " + name + ": ");
+            System.out.println("Enter the quantity of" + name + ": ");
             int quantity = scanner.nextInt();
-            System.out.println("Enter the color of " + name + ": ");
+            System.out.println("Enter the color of" + name + ": ");
             String color = scanner.nextLine();
-            System.out.println("Enter the material of " + name + ": ");
+            System.out.println("Enter the material of" + name + ": ");
             String material = scanner.nextLine();
-            System.out.println("Enter the size of " + name + ": ");
+            System.out.println("Enter the size of" + name + ": ");
             String size = scanner.nextLine();
-            System.out.println("Enter the section that " + name + "belongs to: ");
+            System.out.println("Enter the section that" + name + "belongs to: ");
             String section = scanner.nextLine();
-            System.out.println("Enter the brand of " + name + ": ");
+            System.out.println("Enter the brand of" + name + ": ");
             String brand = scanner.nextLine();
 
             System.out.println("What category of clothing item is this? (Outerwear/Shirt/Shoe): ");
@@ -340,6 +390,24 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
+    public static void sellClothingItem(){
+        System.out.println("Which clothing item would you like to add more of? (Outerwear, Shirt, Shoe): ");
+        String item = scanner.nextLine();
+
+        for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
+            if (clothingItem.getName().equals(item)) {
+                System.out.println("How many" + item + " would you like to remove?");
+                int amount = scanner.nextInt();
+                clothingItem.setQuantity(clothingItem.getQuantity() - amount);
+                if (clothingItem.getQuantity() < 0) { //error check
+                    System.out.println("Error - Negative Quantity not possible");
+                    clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
+                } else {
+                    System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity()); //display updated quantity
+                }
+            }
+        }
+    }
 
 
 
@@ -348,12 +416,12 @@ public class WQSAkinsJohnstonSlapshak {
 
         //User Input for Add, Sell, Quit
         while (true) {
-            System.out.print("Would you like to sell an item, add an item to the inventory, or quit (sell/add/quit): ");
+            System.out.println("Would you like to sell an item, add an item to the inventory, or quit (sell/add/quit)");
             String action = scanner.nextLine();
 
             // ADD
             if (action.equals("add")) {
-                System.out.print("What type of item would you like to add? (food/household/electronics/clothing): ");
+                System.out.println("What type of item would you like to add? (food/household/electronics/clothing)");
                 String category = scanner.nextLine();
 
                 displayInventory(category);
