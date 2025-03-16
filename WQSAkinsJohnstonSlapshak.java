@@ -1,39 +1,314 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class WQSAkinsJohnstonSlapshak {
+    static Scanner scanner = new Scanner(System.in);
+
+    //Instances (At least 1 from each class at bottom of hierarchy)
+    //Food Items
+    static Fruit apple = new Fruit("Apple","Fruit",.50, 10, "03/23/25", "Brazil", "Pome");
+    static ShelfStable cereal = new ShelfStable("Frosted Flakes", "Shelf Stable", 2.50, 8, "05/15/27", "Canada", "Box");
+    static Vegetable carrot = new Vegetable("Carrot", "Vegetable", .75, 4, "03/24/25", "United States", "Root");
+
+    //Household Items
+    static CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Laundry Room", true);
+    static Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Living Room", "Brown", "Leather");
+
+    //Electronic Items
+    static Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Apple", 2023, 15);
+    static Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Apple", 2022, false, true);
+    static TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Roku", 2025, 32);
+
+    //Clothing Items
+    static Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Blue", "polyester", "Medium", "Women's", "Columbia");
+    static Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
+    static Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Brown", "Leather", "8.5", "Women's", "Frye");
+
+    //Arrays to store items
+    static FoodItem[] foods = {apple, cereal, carrot};
+    static HouseholdItem[] households = {laundryDetergent, chair};
+    static ElectronicsItem[] electronics = {macbook, iPhone, rokuTV};
+    static ClothingItem[] clothes = {rainJacket, tShirt, boots};
+
+    /**
+     * Method that displays inventory based on specified category
+     * @param category String
+     */
+    public static void displayInventory(String category) {
+        switch (category) {
+            case "food":
+                System.out.println("Food Inventory: " + Arrays.toString(foods));
+                break;
+            case "household":
+                System.out.println("Household Inventory: " + Arrays.toString(households));
+                break;
+            case "electronics":
+                System.out.println("Electronics Inventory: " + Arrays.toString(electronics));
+                break;
+            case "clothing":
+                System.out.println("Clothing Inventory: " + Arrays.toString(clothes));
+                break;
+            default:
+                System.out.println("Invalid Category");
+        }
+    }
+
+    /**
+     * Method that adds an item to specific inventory based on category (subclass)
+     * @param newItem object of StoreItem
+     */
+    public static void addInventory(StoreItem newItem) {
+        if (newItem instanceof FoodItem) {
+            FoodItem[] newFoods = Arrays.copyOf(foods, foods.length + 1); // Create new arrays with increased sizes
+            newFoods[foods.length] = (FoodItem) newItem; // adding new foodItem at the end of array by indexing
+            foods = newFoods;
+            System.out.println(newItem.getName() + " added to food inventory");
+
+        } else if (newItem instanceof HouseholdItem) {
+            HouseholdItem[] newHouseholds = Arrays.copyOf(households, households.length + 1);
+            newHouseholds[households.length] = (HouseholdItem) newItem;
+            households = newHouseholds;
+            System.out.println(newItem.getName() + " added to household inventory");
+
+        } else if (newItem instanceof ElectronicsItem) {
+            ElectronicsItem[] newElectronics = Arrays.copyOf(electronics, electronics.length + 1);
+            newElectronics[electronics.length] = (ElectronicsItem) newItem;
+            electronics = newElectronics;
+            System.out.println(newItem.getName() + " added to electronics inventory");
+
+        } else if (newItem instanceof ClothingItem) {
+            ClothingItem[] newClothes = Arrays.copyOf(clothes, clothes.length + 1);
+            newClothes[clothes.length] = (ClothingItem) newItem;
+            clothes = newClothes;
+            System.out.println(newItem.getName() + " added to clothing inventory");
+
+        } else {
+            System.out.println("Invalid item");
+        }
+
+    }
+
+    /**
+     * Helper method for addInventory
+     * Adds new FoodItem to the inventory based on subclass - Fruit, Vegetable, ShelfStable
+     */
+    public static void addFoodItem() {
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("existing")) {
+            System.out.println("Which food item would you like to add more of? (Apple, Frosted Flakes, Carrot): ");
+            String item = scanner.nextLine();
+
+            for (FoodItem food: foods) { // for each food in the foods array
+                if (food.getName().equals(item)) {
+                    System.out.println("How many" + item + " would you like to add?");
+                    int amount = scanner.nextInt();
+                    food.setQuantity(food.getQuantity() + amount);
+                    System.out.println("Updated quantity of" + item + ": " + food.getQuantity()); // increase quantity
+
+                }
+            }
+
+        } else if (choice.equals("new")) {
+            System.out.println("Enter the name of the new food item you would like to add: ");
+            String name = scanner.nextLine();
+            System.out.println("Enter the price of" + name + ": ");
+            double price = scanner.nextDouble();
+            System.out.println("Enter the quantity of" + name + ": ");
+            int quantity = scanner.nextInt();
+            System.out.println("Enter the expiration date of" + name + ": ");
+            String expirationDate = scanner.nextLine();
+            System.out.println("Enter the country of origin of" + name + ": ");
+            String countryOfOrigin = scanner.nextLine();
+
+            System.out.println("What category of food item is this? (Fruit/Vegetable/Shelf Stable): ");
+            String foodCategory = scanner.nextLine();
+
+            switch (foodCategory) {
+                case "Fruit":
+                   System.out.println("Enter the fruit group (i.e. Pome, Citrus, Berry): ");
+                   String fruitGroup = scanner.nextLine();
+                   Fruit newFruit = new Fruit(name, "Fruit", price, quantity, expirationDate, countryOfOrigin, fruitGroup); // create new Fruit object based on user input
+                   addInventory(newFruit);
+                   break;
+                case "Vegetable":
+                    System.out.println("Enter the vegetable group (i.e. Root, Starchy, Cruciferous): ");
+                    String vegetableGroup = scanner.nextLine();
+                    Vegetable newVegetable = new Vegetable(name, "Vegetable", price, quantity, expirationDate, countryOfOrigin, vegetableGroup); // create new Vegetable object based on user input
+                    addInventory(newVegetable);
+                    break;
+                case "Shelf Stable":
+                    System.out.println("Enter the packaging type: ");
+                    String packagingType = scanner.nextLine();
+                    ShelfStable newShelfStable = new ShelfStable(name, "Shelf Stable", price, quantity, expirationDate, countryOfOrigin, packagingType); // create new ShelfStable object based on user input
+                    addInventory(newShelfStable);
+                    break;
+                default:
+                    System.out.println("Invalid food category");
+                    break;
+            }
+
+        }
+
+    }
+
+    /**
+     * Helper method for addInventory
+     * Adds new HouseHold item to the inventory based on subclass - Cleaning Supply, Furniture
+     */
+    public static void addHouseholdItem() {
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("existing")) {
+            System.out.println("Which household item would you like to add more of? (Laundry Detergent, Chair): ");
+            String item = scanner.nextLine();
+
+            for (HouseholdItem householdItem: households) { // for each household item in the households array
+                if (householdItem.getName().equals(item)) {
+                    System.out.println("How many" + item + " would you like to add?");
+                    int amount = scanner.nextInt();
+                    householdItem.setQuantity(householdItem.getQuantity() + amount);
+                    System.out.println("Updated quantity of" + item + ": " + householdItem.getQuantity()); // increase quantity
+
+                }
+            }
+
+        } else if (choice.equals("new")) {
+            System.out.println("Enter the name of the new household item you would like to add: ");
+            String name = scanner.nextLine();
+            System.out.println("Enter the price of" + name + ": ");
+            double price = scanner.nextDouble();
+            System.out.println("Enter the quantity of" + name + ": ");
+            int quantity = scanner.nextInt();
+            System.out.println("Enter the room associated with" + name + ": ");
+            String roomType = scanner.nextLine();
+            System.out.println("Is" + name + "toxic? (true/false): ");
+
+            System.out.println("What category of household item is this? (Cleaning Supply/ Furniture): ");
+            String householdItemCategory = scanner.nextLine();
+
+            switch (householdItemCategory) {
+                case "Cleaning Supply":
+                    System.out.println("Is it toxic? (true/false): ");
+                    boolean isToxic = scanner.nextBoolean();
+                    CleaningSupply newCleaningSupply = new CleaningSupply(name, "Cleaning Supply", price, quantity, roomType, isToxic);
+                    addInventory(newCleaningSupply);
+                    break;
+                case "Furniture":
+                    System.out.println("Enter the material: ");
+                    String material = scanner.nextLine();
+                    System.out.println("Enter the color: ");
+                    String color = scanner.nextLine();
+                    Furniture newFurniture = new Furniture(name, "Furniture", price, quantity, roomType, color, material);
+                    break;
+                default:
+                    System.out.println("Invalid household item category");
+            }
+        }
+    }
+
+    public static void addElectronicsItem() {
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("existing")) {
+            System.out.println("Which electronics item would you like to add more of? (MacBook, iPhone, Roku TV): ");
+            String item = scanner.nextLine();
+
+            for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
+                if (electronicsItem.getName().equals(item)) {
+                    System.out.println("How many" + item + " would you like to add?");
+                    int amount = scanner.nextInt();
+                    electronicsItem.setQuantity(electronicsItem.getQuantity() + amount);
+                    System.out.println("Updated quantity of" + item + ": " + electronicsItem.getQuantity()); // increase quantity
+
+                }
+            }
+
+        } else if (choice.equals("new")) {
+            System.out.println("Enter the name of the new electronics item you would like to add: ");
+            String name = scanner.nextLine();
+            System.out.println("Enter the price of" + name + ": ");
+            double price = scanner.nextDouble();
+            System.out.println("Enter the quantity of" + name + ": ");
+            int quantity = scanner.nextInt();
+            System.out.println("Enter the brand of" + name + ": ");
+            String brand = scanner.nextLine();
+            System.out.println("Enter the year of" + name + ": ");
+            int year = scanner.nextInt();
+
+            System.out.println("What category of electronics item is this? (TV/Phone/Laptop): ");
+            String electronicsCategory = scanner.nextLine();
+
+            switch(electronicsCategory) {
+                case "TV":
+                    System.out.println("Enter the screen size: ");
+                    int tvScreenSize = scanner.nextInt();
+                    TV newTV = new TV(name, "TV", price, quantity, brand, year, tvScreenSize);
+                    addInventory(newTV);
+                    break;
+                case "Phone":
+                    System.out.println("Is it a landline (true/false): ");
+                    boolean isLandline = scanner.nextBoolean();
+                    System.out.println("Is it a cellphone (true/false: )");
+                    boolean isCellphone = scanner.nextBoolean();
+                    Phone newPhone = new Phone(name, "Phone", price, quantity, brand, year, isLandline,isCellphone);
+                    addInventory(newPhone);
+                    break;
+                case "Laptop":
+                    System.out.println("Enter the screen size: ");
+                    int laptopScreenSize = scanner.nextInt();
+                    Laptop newLaptop = new Laptop(name, "Laptop", price, quantity, brand, year, laptopScreenSize);
+                    addInventory(newLaptop);
+                    break;
+                default:
+                    System.out.println("Invalid electronics item category");
+
+            }
+        }
+    }
+
+
+
     public static void main(String[] args) {
-        //instances (At least 1 from each class at bottom of hierarchy)
-        Fruit apple = new Fruit("Apple","Fruit",.50, 10, "03/23/25", "Brazil", "Pome");
-        ShelfStable cereal = new ShelfStable("Frosted Flakes", "Shelf Stable", 2.50, 8, "05/15/27", "Canada", "Box");
-        Vegetable carrot = new Vegetable("Carrot", "Vegetable", .75, 4, "03/24/25", "United States", "Root");
 
-        CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Laundry Room", true);
-        Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Living Room", "Brown", "Leather");
+        //User Input for Add, Sell, Quit
+        while (true) {
+            System.out.println("Would you like to sell an item, add an item to the inventory, or quit (sell/add/quit)");
+            String action = scanner.nextLine();
 
-        Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Apple", 2023, 15);
-        Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Apple", 2022, false, true);
-        TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Roku", 2025, 32);
+            // ADD
+            if (action.equals("add")) {
+                System.out.println("What type of item would you like to add? (food/household/electronics/clothing)");
+                String category = scanner.nextLine();
 
-        Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Blue", "polyester", "Medium", "Women's", "Columbia");
-        Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
-        Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Brown", "Leather", "8.5", "Women's", "Frye");
+                displayInventory(category);
 
-        //nested arrays
+                // call appropriate method based on category
+                if (category.equals("food")) {
+                    addFoodItem();
+                } else if (category.equals("household")) {
+                    addHouseholdItem();
+                } else if (category.equals("electronics")) {
+                    addElectronicsItem();
+                } else if (category.equals("clothing")) {
+                    addClothingItem();
+                } else {
+                    System.out.println("Invalid category");
+                }
+                // DISPLAY RETURN POLICY HERE
 
-        //*Foods
-        FoodItem[] foods = {apple, cereal, carrot};
-
-        //*Household
-        HouseholdItem[] households = {laundryDetergent, chair};
-
-        //*Electronics
-        ElectronicsItem[] electronics = {macbook, iPhone, rokuTV};
-
-        //*Clothing
-        ClothingItem[] clothes = {rainJacket, tShirt, boots};
+                // SELL
 
 
-        //user input for add or subtract
+                //QUIT
+            }
+        }
 
-        //add
+
+
         //display categories
         //display items
         //user input for chosen item + quantity
