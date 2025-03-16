@@ -7,7 +7,7 @@
 
 /**
  * ClothingItem Class: Subclass of Store Item
- * 4 additional attribute: String color, String material, String size, String section
+ * 5 additional attribute: String color, String material, String size, String section, String brand
  * Inherited attributes: String name, String category, double price, int quantity
  */
 class ClothingItem extends StoreItem {
@@ -15,6 +15,7 @@ class ClothingItem extends StoreItem {
     private String material;
     private String size;
     private String section;
+    private String brand;
 
     /**
      * Constructor method with 7 attributes as parameters
@@ -26,13 +27,36 @@ class ClothingItem extends StoreItem {
      * @param material String material (i.e. cotton, polyester)
      * @param size String size (i.e. small, medium, large)
      * @param section String section (i.e. children's, men's, women's)
+     * @param brand String
      */
-    public ClothingItem(String name, String category, double price, int quantity, String color, String material, String size, String section) {
+    public ClothingItem(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
         super(name, category, price, quantity);
         this.color = color;
         this.material = material;
         this.size = size;
         this.section = section;
+        this.brand = brand;
+    }
+
+    /**
+     * toString method for ClothingItem
+     * Displays all parameters of StoreItem plus color, material, size, section, and brand
+     * Example of polymorphism
+     * @return String representation of ClothingItem
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Color: " + color + ", Material: " + material + ", Size: " + size + ". Section: " + section + ", Brand:" + brand;
+    }
+
+    /**
+     * Method that overrides getCategory method
+     * Labels every instance of ClothingItem as Clothing
+     * @return String "Clothing"
+     */
+    @Override
+    public String getCategory() {
+        return "Clothing";
     }
 
     /**
@@ -68,6 +92,12 @@ class ClothingItem extends StoreItem {
     }
 
     /**
+     * Getter method for brand
+     * @return String instance of brand
+     */
+    public String getBrand() { return this.brand;}
+
+    /**
      * Setter method for color
      * @param color String
      */
@@ -98,12 +128,18 @@ class ClothingItem extends StoreItem {
     public void setSection(String section) {
         this.section = section;
     }
+
+    /**
+     * Setter method for brand
+     * @param brand String
+     */
+    public void setBrand(String brand) {this.brand = brand; }
 }
 
 /**
  * Shirt Class: Subclass of ClothingItem
  * 1 additional attribute: String sleeveLength
- * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section
+ * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section, String brand
  */
 class Shirt extends ClothingItem {
     private String sleeveLength;
@@ -118,12 +154,24 @@ class Shirt extends ClothingItem {
      * @param material String
      * @param size String
      * @param section String
+     * @param brand String
      * @param sleeveLength String (i.e.t-shirt, long sleeve, tank top)
      */
-    public Shirt(String name, String category, double price, int quantity, String color, String material, String size, String section, String sleeveLength) {
-        super(name, category, price, quantity, color, material, size, section);
+    public Shirt(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand, String sleeveLength) {
+        super(name, category, price, quantity, color, material, size, section, brand);
         this.sleeveLength = sleeveLength;
 
+    }
+
+    /**
+     * toString method for Shirt
+     * Displays all parameters of ClothingItem plus sleeveLength
+     * Example of polymorphism
+     * @return String representation of Shirt
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Sleeve Length: " + sleeveLength;
     }
 
     /**
@@ -157,7 +205,7 @@ class Shirt extends ClothingItem {
 /**
  * Shoe Class: Subclass of ClothingItem
  * No additional attributes
- * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section
+ * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section, String brand
  */
 class Shoe extends ClothingItem {
 
@@ -171,10 +219,22 @@ class Shoe extends ClothingItem {
      * @param material String
      * @param size String
      * @param section String
+     * @param brand String
      */
-    public Shoe(String name, String category, double price, int quantity, String color, String material, String size, String section) {
-        super(name, category, price, quantity, color, material, size, section);
+    public Shoe(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
+        super(name, category, price, quantity, color, material, size, section, brand);
 
+    }
+
+    /**
+     * toString method for Shoe
+     * Displays all parameters in ClothingItem
+     * Example of polymorphism
+     * @return String representation of Shoe
+     */
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     /**
@@ -193,7 +253,7 @@ class Shoe extends ClothingItem {
 /**
  * Outerwear Class: Subclass of ClothingItem
  * No additional attributes
- * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section
+ * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section, String brand
  */
 class Outerwear extends ClothingItem {
 
@@ -207,10 +267,22 @@ class Outerwear extends ClothingItem {
      * @param material String
      * @param size String
      * @param section String
+     * @param brand String
      */
-    public Outerwear(String name, String category, double price, int quantity, String color, String material, String size, String section) {
-        super(name, category, price, quantity, color, material, size, section);
+    public Outerwear(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
+        super(name, category, price, quantity, color, material, size, section, brand);
 
+    }
+
+    /**
+     * toString method for Outerwear
+     * Displays all parameters in ClothingItem
+     * Example of polymorphism
+     * @return String representation of Outerwear
+     */
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     /**

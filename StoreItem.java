@@ -32,6 +32,15 @@ public class StoreItem {
    }
 
     /**
+     * toString method for StoreItem that includes name, category, price, and quantity
+     * @return String representation of StoreItem
+     */
+   @Override
+   public String toString() {
+        return "Name: " + name + " , Category: " + category + " , Price: " + price + " , Quantity: " + quantity;
+   }
+
+    /**
      * Getter method for quantity
      * @return instance of int quantity
      */

@@ -29,6 +29,17 @@ class FoodItem extends StoreItem {
     }
 
     /**
+     * toString method for FoodItem
+     * Displays parameters of StoreItem plus expiration date and country of origin
+     * Example of polymorphism
+     * @return String representation of FoodItem
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Expiration Date: " + expirationDate + ", Country of Origin:: " + countryOfOrigin;
+    }
+
+    /**
      * Method that overrides getCategory method
      * Labels any instance of FoodItem as category "Food"
      * Example of polymorphism
@@ -96,6 +107,17 @@ class Fruit extends FoodItem {
     }
 
     /**
+     * toString method for Fruit
+     * Displays all parameters of FoodItem plus fruitGroup
+     * Example of polymorphism
+     * @return String representation of Fruit
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Fruit Group: " + fruitGroup;
+    }
+
+    /**
      * Method that overrides getCategory method
      * Labels every instance of Fruit class as in "Fruit" category
      * Example of polymorphism
@@ -148,6 +170,17 @@ class Vegetable extends FoodItem {
     }
 
     /**
+     * toString method for Vegetable
+     * Displays all parameters of FoodItem plus vegetableGroup
+     * Example of polymorphism
+     * @return String representation of Vegetable
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Vegetable Group" + vegetableGroup;
+    }
+
+    /**
      * Method that overrides getCategory method
      * Labels every instance of Vegetable class as category "Vegetable"
      * Example of polymorphism
@@ -196,6 +229,17 @@ class ShelfStable extends FoodItem {
     public ShelfStable(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin, String packagingType) {
         super(name, category, price, quantity, expirationDate, countryOfOrigin);
         this.packagingType = packagingType;
+    }
+
+    /**
+     * toString method for ShelfStable
+     * Displays all parameters of FoodItem plus packagingType
+     * example of polymorphism
+     * @return String representation of ShelfStable
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Packaging Type: " + packagingType;
     }
 
     /**

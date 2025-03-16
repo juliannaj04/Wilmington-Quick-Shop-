@@ -27,6 +27,17 @@ class HouseholdItem extends StoreItem {
     }
 
     /**
+     * toString method for HouseholdItem
+     * Displays all parameters of StoreItem plus roomType
+     * Example of polymorphism
+     * @return String representation of HouseholdItem
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Room Type: " + roomType;
+    }
+
+    /**
      * Method that overrides getCategory method
      * Labels an instance of HouseHold Item as household item
      * Example of polymorphism
@@ -76,6 +87,17 @@ class CleaningSupply extends HouseholdItem {
         super(name, category, price, quantity, roomType);
         this.isToxic = isToxic;
 
+    }
+
+    /**
+     * toString method for CleaningSupply
+     * Displays all parameters of HouseholdItem plus isToxic
+     * Example of polymorphism
+     * @return String representation of CleaningSupply
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Is Toxic: " + isToxic;
     }
 
     /**
@@ -131,6 +153,17 @@ class Furniture extends HouseholdItem {
         this.color = color;
         this.material = material;
 
+    }
+
+    /**
+     * toString method for Furniture
+     * Displays all parameters of HouseholdItem plus color and material
+     * Example of polymorphism
+     * @return String representation of Furniture
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Color: " + color + ", Material: " + material;
     }
 
     /**

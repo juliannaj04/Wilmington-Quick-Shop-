@@ -32,6 +32,17 @@ class ElectronicsItem extends StoreItem {
     }
 
     /**
+     * toString method for ElectronicsItem
+     * Displays parameters for StoreItem plus brand and year
+     * Example of polymorphism
+     * @return String representation of ElectronicsItem
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Brand: " + brand + ", Year: " + year;
+    }
+
+    /**
      * Method that overrides getCategory method
      * Labels instance of ElectronicsItem as "Electronics"
      * Example of polymorphism
@@ -79,10 +90,11 @@ class ElectronicsItem extends StoreItem {
 
 /**
  * Class TV: Subclass of ElectronicsItem
- * No additional attributes
+ * 1 Additional attribute: int screenSize
  * Inherited attributes: String name, String category, double price, int quantity, String brand, int year
  */
 class TV extends ElectronicsItem {
+    private int screenSize;
 
     /**
      * Constructor method that takes 5 parameters
@@ -92,9 +104,24 @@ class TV extends ElectronicsItem {
      * @param quantity int quantity
      * @param brand String
      * @param year int
+     * @param screenSize int - screen size in inches
+     *
      */
-    public TV(String name, String category, double price, int quantity, String brand, int year) {
+    public TV(String name, String category, double price, int quantity, String brand, int year, int screenSize) {
         super(name, category, price, quantity, brand, year);
+        this.screenSize = screenSize;
+
+    }
+
+    /**
+     * toString method for TV
+     * displays all attributes in ElectronicsItem plus screenSize
+     * Example of polymorphism
+     * @return String representation of TV
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Screen Size" + screenSize;
 
     }
 
@@ -106,6 +133,22 @@ class TV extends ElectronicsItem {
     @Override
     public String getCategory() {
         return "TV";
+    }
+
+    /**
+     * Getter method for screenSize
+     * @return instance of int screenSize
+     */
+    public int getScreenSize() {
+        return this.screenSize;
+    }
+
+    /**
+     * Setter method for screenSize
+     * @param screenSize int
+     */
+    public void setScreenSize(int screenSize) {
+        this.screenSize = screenSize;
     }
 }
 
@@ -134,6 +177,17 @@ class Phone extends ElectronicsItem {
         this.isLandline = isLandline;
         this.isCellphone = isCellphone;
 
+    }
+
+    /**
+     * toString method for Phone
+     * Displays all parameters of ElectronicsItem plus isLandline and isCellphone
+     * Example of polymorphism
+     * @return String representation of Phone
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Is Landline: " + isLandline + ", Is Cellphone: " + isCellphone;
     }
 
     /**
@@ -196,12 +250,23 @@ class Laptop extends ElectronicsItem {
      * @param quantity int
      * @param brand String
      * @param year int
-     * @param screenSize int
+     * @param screenSize int - screen size in inches
      */
     public Laptop(String name, String category, double price, int quantity, String brand, int year, int screenSize) {
         super(name, category, price, quantity, brand, year);
         this.screenSize = screenSize;
 
+    }
+
+    /**
+     * toString method for Laptop
+     * Displays all parameters of ElectronicsItem plus screenSize
+     * Example of polymorphism
+     * @return String representation of Laptop
+     */
+    @Override
+    public String toString() {
+        return super.toString() + ", Screen Size: " + screenSize;
     }
 
     /**
