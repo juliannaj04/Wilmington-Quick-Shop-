@@ -209,6 +209,10 @@ public class WQSAkinsJohnstonSlapshak {
         }
     }
 
+    /**
+     * Helper method for addInventory
+     * Adds new electronics item to the inventory based on subclass - TV, Phone, Laptop
+     */
     public static void addElectronicsItem() {
         System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
         String choice = scanner.nextLine();
@@ -270,9 +274,71 @@ public class WQSAkinsJohnstonSlapshak {
         }
     }
 
+    public static void addClothingItem() {
+        System.out.println("Would you like to add a new item or more of an existing item? (new/existing): ");
+        String choice = scanner.nextLine();
+
+        if (choice.equals("existing")) {
+            System.out.println("Which clothing item would you like to add more of? (Outerwear, Shirt, Shoe): ");
+            String item = scanner.nextLine();
+
+            for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
+                if (clothingItem.getName().equals(item)) {
+                    System.out.println("How many" + item + " would you like to add?");
+                    int amount = scanner.nextInt();
+                    clothingItem.setQuantity(clothingItem.getQuantity() + amount);
+                    System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity()); // increase quantity
+
+                }
+            }
+
+        } else if (choice.equals("new")) {
+            System.out.println("Enter the name of the new clothing item you would like to add: ");
+            String name = scanner.nextLine();
+            System.out.println("Enter the price of" + name + ": ");
+            double price = scanner.nextDouble();
+            System.out.println("Enter the quantity of" + name + ": ");
+            int quantity = scanner.nextInt();
+            System.out.println("Enter the color of" + name + ": ");
+            String color = scanner.nextLine();
+            System.out.println("Enter the material of" + name + ": ");
+            String material = scanner.nextLine();
+            System.out.println("Enter the size of" + name + ": ");
+            String size = scanner.nextLine();
+            System.out.println("Enter the section that" + name + "belongs to: ");
+            String section = scanner.nextLine();
+            System.out.println("Enter the brand of" + name + ": ");
+            String brand = scanner.nextLine();
+
+            System.out.println("What category of clothing item is this? (Outerwear/Shirt/Shoe): ");
+            String clothingCategory = scanner.nextLine();
+
+            switch (clothingCategory) {
+                case "Outerwear":
+                    Outerwear newOuterwear = new Outerwear(name, "Outerwear", price, quantity, color, material, size, section, brand);
+                    addInventory(newOuterwear);
+                    break;
+                case "Shirt":
+                    System.out.println("Enter the sleeve length: ");
+                    String sleeveLength = scanner.nextLine();
+                    Shirt newShirt = new Shirt(name,"Shirt", price, quantity, color, material, size, section, brand, sleeveLength);
+                    addInventory(newShirt);
+                    break;
+                case "Shoe":
+                    Shoe newShoe = new Shoe(name, "Outerwear", price, quantity, color, material, size, section, brand);
+                    addInventory(newShoe);
+                    break;
+                default:
+                    System.out.println("Invalid clothing category");
+
+            }
+        }
+    }
 
 
-    public static void main(String[] args) {
+
+
+        public static void main(String[] args) {
 
         //User Input for Add, Sell, Quit
         while (true) {
