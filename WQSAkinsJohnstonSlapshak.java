@@ -429,7 +429,6 @@ public class WQSAkinsJohnstonSlapshak {
         while (true) {
             System.out.print("Would you like to sell an item, add an item to the inventory, or quit (sell/add/quit): ");
             String action = scanner.nextLine();
-            scanner.nextLine();
 
             // ADD
             if (action.equals("add")) {
