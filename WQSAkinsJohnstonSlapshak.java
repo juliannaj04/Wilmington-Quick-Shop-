@@ -97,12 +97,12 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which food item would you like to add more of? (Apple, Frosted Flakes, Carrot): ");
+            System.out.print("What is the name of the food item you would like to add more of?: ");
             String item = scanner.nextLine();
 
             for (FoodItem food: foods) { // for each food in the foods array
                 if (food.getName().equals(item)) {
-                    System.out.println("How many " + item + " would you like to add? "); // FIX LATER
+                    System.out.println("How many " + item + "(s)" + " would you like to add? "); // FIX LATER
                     int amount = scanner.nextInt();
                     food.setQuantity(food.getQuantity() + amount);
                     System.out.println("Updated quantity of " + item + ": " + food.getQuantity()); // increase quantity
@@ -157,7 +157,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of FoodItem
      */
     public static void sellFoodItem(){
-        System.out.print("Which food item would you like to sell? (Apple, Frosted Flakes, Carrot): ");
+        System.out.print("What is the name of the food?: ");
         String item = scanner.nextLine();
 
         for (FoodItem food: foods) { // for each food in the foods array
@@ -166,7 +166,7 @@ public class WQSAkinsJohnstonSlapshak {
                 int amount = scanner.nextInt();
                 food.setQuantity(food.getQuantity() - amount); //decrease quantity
                 if (food.getQuantity() < 0) { //error check
-                    System.out.print("Error - Negative Quantity not possible - Changes reverted");
+                    System.out.println("Error - Negative Quantity not possible - Changes reverted ");
                     food.setQuantity(food.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + food.getQuantity()); // display updated quantity
@@ -179,11 +179,11 @@ public class WQSAkinsJohnstonSlapshak {
      * Adds new HouseHold item to the inventory based on subclass - Cleaning Supply, Furniture
      */
     public static void addHouseholdItem() {
-        System.out.print("Would you like to add a new item or more of an existing item? (new/existing): ");
+        System.out.print("What is the name of the household item?: ");
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which household item would you like to add more of? (Tide Pods, Recliner): ");
+            System.out.print("What is the name of the household item you would like to add more of?: ");
             String item = scanner.nextLine();
 
             for (HouseholdItem householdItem: households) { // for each household item in the households array
@@ -233,7 +233,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of HouseholdItem
      */
     public static void sellHouseholdItem(){
-        System.out.print("Which household item would you like to sell? (Tide Pods, Recliner): ");
+        System.out.print("What is the name of the household item?: ");
         String item = scanner.nextLine();
 
         for (HouseholdItem householdItem: households) { // for each household item in the households array
@@ -242,7 +242,7 @@ public class WQSAkinsJohnstonSlapshak {
                 int amount = scanner.nextInt();
                 householdItem.setQuantity(householdItem.getQuantity() - amount); //decrease quantity
                 if (householdItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
+                    System.out.println("Error - Negative Quantity not possible ");
                     householdItem.setQuantity(householdItem.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + householdItem.getQuantity()); //display updated quantity
@@ -260,7 +260,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which electronics item would you like to add more of? (MacBook, iPhone, Roku TV): ");
+            System.out.print("What is the name of the Electronic item you would like to add more of?: ");
             String item = scanner.nextLine();
 
             for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
@@ -320,7 +320,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ElectronicItem
      */
     public static void sellElectronicItem(){
-        System.out.print("Which electronics item would you like to sell? (MacBook Pro, iPhone, Roku TV): ");
+        System.out.print("What is the name of the Electronic Item?: ");
         String item = scanner.nextLine();
 
         for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
@@ -329,7 +329,7 @@ public class WQSAkinsJohnstonSlapshak {
                 int amount = scanner.nextInt();
                 electronicsItem.setQuantity(electronicsItem.getQuantity() - amount); //update quantity
                 if (electronicsItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
+                    System.out.println("Error - Negative Quantity not possible ");
                     electronicsItem.setQuantity(electronicsItem.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + electronicsItem.getQuantity()); //display updated quantity
@@ -346,7 +346,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which clothing item would you like to add more of? (Rain Jacket, tShirt, Cowboy Boots): ");
+            System.out.print("What is the name of the clothing item you would like to add more of?: ");
             String item = scanner.nextLine();
 
             for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
@@ -406,7 +406,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ClothingItem
      */
     public static void sellClothingItem(){
-        System.out.print("Which clothing item would you like to add more of? (Rain Jacket, tShirt, Cowboy Boots): ");
+        System.out.print("What is the name of the clothing item?: ");
         String item = scanner.nextLine();
 
         for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
@@ -415,7 +415,7 @@ public class WQSAkinsJohnstonSlapshak {
                 int amount = scanner.nextInt();
                 clothingItem.setQuantity(clothingItem.getQuantity() - amount);
                 if (clothingItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
+                    System.out.println("Error - Negative Quantity not possible ");
                     clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity()); //display updated quantity
