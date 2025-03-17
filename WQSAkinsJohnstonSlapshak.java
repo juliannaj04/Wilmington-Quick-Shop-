@@ -440,12 +440,16 @@ public class WQSAkinsJohnstonSlapshak {
                 // call appropriate method based on category
                 if (category.equals("food")) {
                     addFoodItem();
+                    displayInventory("food");
                 } else if (category.equals("household")) {
                     addHouseholdItem();
+                    displayInventory("household");
                 } else if (category.equals("electronics")) {
                     addElectronicsItem();
+                    displayInventory("electronics");
                 } else if (category.equals("clothing")) {
                     addClothingItem();
+                    displayInventory("clothing");
                 } else {
                     System.out.println("Invalid category");
                 }
@@ -461,12 +465,16 @@ public class WQSAkinsJohnstonSlapshak {
                 // call appropriate method based on category
                 if (category.equals("food")) {
                     sellFoodItem();
+                    displayInventory("food");
                 } else if (category.equals("household")) {
                     sellHouseholdItem();
+                    displayInventory("household");
                 } else if (category.equals("electronics")) {
                     sellElectronicItem();
+                    displayInventory("electronics");
                 } else if (category.equals("clothing")) {
                     sellClothingItem();
+                    displayInventory("clothing");
                 } else {
                     System.out.println("Invalid category");
                 }
