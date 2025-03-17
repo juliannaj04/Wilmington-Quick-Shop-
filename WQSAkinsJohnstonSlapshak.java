@@ -478,11 +478,14 @@ public class WQSAkinsJohnstonSlapshak {
                 } else {
                     System.out.println("Invalid category");
                 }
+
+            // QUIT
+            } else if (action.equals("quit")) {
+                System.out.print("Exiting the program...");
+                break;
             }
 
 
-
-            //QUIT
 
         }
 
