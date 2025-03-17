@@ -97,7 +97,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which food item would you like to add more of? (Apple, Frosted Flakes, Carrot): ");
+            System.out.print("What is the name of the food item you would like to add more of? ");
             String item = scanner.nextLine();
 
             for (FoodItem food: foods) { // for each food in the foods array
@@ -157,7 +157,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of FoodItem
      */
     public static void sellFoodItem(){
-        System.out.print("Which food item would you like to sell? (Apple, Frosted Flakes, Carrot): ");
+        System.out.print("What is the name of the food item you would like to sell? ");
         String item = scanner.nextLine();
 
         for (FoodItem food: foods) { // for each food in the foods array
@@ -183,7 +183,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which household item would you like to add more of? (Tide Pods, Recliner): ");
+            System.out.print("What is the name of the item would you like to add more of? ");
             String item = scanner.nextLine();
 
             for (HouseholdItem householdItem: households) { // for each household item in the households array
@@ -233,7 +233,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of HouseholdItem
      */
     public static void sellHouseholdItem(){
-        System.out.print("Which household item would you like to sell? (Tide Pods, Recliner): ");
+        System.out.print("What is the name of the household item would you like to sell? ");
         String item = scanner.nextLine();
 
         for (HouseholdItem householdItem: households) { // for each household item in the households array
@@ -260,7 +260,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which electronics item would you like to add more of? (MacBook, iPhone, Roku TV): ");
+            System.out.print("What is the name of the electronics item would you like to add more of? ");
             String item = scanner.nextLine();
 
             for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
@@ -320,7 +320,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ElectronicItem
      */
     public static void sellElectronicItem(){
-        System.out.print("Which electronics item would you like to sell? (MacBook Pro, iPhone, Roku TV): ");
+        System.out.print("What is the name of the electronics item you would like to sell? ");
         String item = scanner.nextLine();
 
         for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
@@ -346,7 +346,7 @@ public class WQSAkinsJohnstonSlapshak {
         String choice = scanner.nextLine();
 
         if (choice.equals("existing")) {
-            System.out.print("Which clothing item would you like to add more of? (Rain Jacket, tShirt, Cowboy Boots): ");
+            System.out.print("What is the name of the clothing item would you like to add more of? ");
             String item = scanner.nextLine();
 
             for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
@@ -406,7 +406,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ClothingItem
      */
     public static void sellClothingItem(){
-        System.out.print("Which clothing item would you like to add more of? (Rain Jacket, tShirt, Cowboy Boots): ");
+        System.out.print("What is the name of the clothing item you would like to add more of? ");
         String item = scanner.nextLine();
 
         for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
