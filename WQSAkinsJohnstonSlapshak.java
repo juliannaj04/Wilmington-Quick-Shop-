@@ -162,7 +162,7 @@ public class WQSAkinsJohnstonSlapshak {
 
         for (FoodItem food: foods) { // for each food in the foods array
             if (food.getName().equals(item)) {
-                System.out.print("How many " + item + " would you like to remove? ");
+                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
                 int amount = scanner.nextInt();
                 food.setQuantity(food.getQuantity() - amount); //decrease quantity
                 if (food.getQuantity() < 0) { //error check
@@ -238,7 +238,7 @@ public class WQSAkinsJohnstonSlapshak {
 
         for (HouseholdItem householdItem: households) { // for each household item in the households array
             if (householdItem.getName().equals(item)) {
-                System.out.print("How many " + item + " would you like to remove? ");
+                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
                 int amount = scanner.nextInt();
                 householdItem.setQuantity(householdItem.getQuantity() - amount); //decrease quantity
                 if (householdItem.getQuantity() < 0) { //error check
@@ -325,7 +325,7 @@ public class WQSAkinsJohnstonSlapshak {
 
         for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
             if (electronicsItem.getName().equals(item)) {
-                System.out.print("How many " + item + " would you like to remove? ");
+                System.out.print("How many " + item + "(s)" +  " would you like to remove? ");
                 int amount = scanner.nextInt();
                 electronicsItem.setQuantity(electronicsItem.getQuantity() - amount); //update quantity
                 if (electronicsItem.getQuantity() < 0) { //error check
@@ -411,7 +411,7 @@ public class WQSAkinsJohnstonSlapshak {
 
         for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
             if (clothingItem.getName().equals(item)) {
-                System.out.print("How many " + item + " would you like to remove? ");
+                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
                 int amount = scanner.nextInt();
                 clothingItem.setQuantity(clothingItem.getQuantity() - amount);
                 if (clothingItem.getQuantity() < 0) { //error check
