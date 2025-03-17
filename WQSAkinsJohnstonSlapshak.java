@@ -233,7 +233,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of HouseholdItem
      */
     public static void sellHouseholdItem(){
-        System.out.print("Which household item would you like to add more of? (Tide Pods, Recliner): ");
+        System.out.print("Which household item would you like to sell? (Tide Pods, Recliner): ");
         String item = scanner.nextLine();
 
         for (HouseholdItem householdItem: households) { // for each household item in the households array
@@ -320,12 +320,12 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ElectronicItem
      */
     public static void sellElectronicItem(){
-        System.out.println("Which electronics item would you like to sell? (MacBook, iPhone, Roku TV): ");
+        System.out.print("Which electronics item would you like to sell? (MacBook Pro, iPhone, Roku TV): ");
         String item = scanner.nextLine();
 
         for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
             if (electronicsItem.getName().equals(item)) {
-                System.out.print("How many" + item + " would you like to remove?");
+                System.out.print("How many " + item + " would you like to remove? ");
                 int amount = scanner.nextInt();
                 electronicsItem.setQuantity(electronicsItem.getQuantity() - amount); //update quantity
                 if (electronicsItem.getQuantity() < 0) { //error check
@@ -453,7 +453,6 @@ public class WQSAkinsJohnstonSlapshak {
                 } else {
                     System.out.println("Invalid category");
                 }
-                // DISPLAY RETURN POLICY HERE
 
             // SELL
             } else if (action.equals("sell")) {
@@ -478,6 +477,7 @@ public class WQSAkinsJohnstonSlapshak {
                 } else {
                     System.out.println("Invalid category");
                 }
+                // DISPLAY RETURN POLICY HERE
 
             // QUIT
             } else if (action.equals("quit")) {
@@ -488,25 +488,6 @@ public class WQSAkinsJohnstonSlapshak {
 
 
         }
-
-
-
-        //display categories
-        //display items
-        //user input for chosen item + quantity
-        //check for exiting loop
-        //display updated inventory items + new quantity
-        //display return policy (is returnable/is not returnable)
-
-        //subtract
-        //display categories
-        //display items
-        //user input for chosen item + quantity
-        //check for exiting loop
-        //display updated inventory items + new quantity
-        //display return policy (is returnable/is not returnable)
-
-
 
     }
 }
