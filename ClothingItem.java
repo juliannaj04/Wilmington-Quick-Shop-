@@ -46,7 +46,7 @@ class ClothingItem extends StoreItem {
      */
     @Override
     public String toString() {
-        return super.toString() + ", Color: " + color + ", Material: " + material + ", Size: " + size + ". Section: " + section + ", Brand:" + brand;
+        return super.toString() + ", Color: " + color + ", Material: " + material + ", Size: " + size + ". Section: " + section + ", Brand:" + brand + ", Returns: Accepted - Cannot be damaged - Need receipt for FULL refund - Store credit without receipt";
     }
 
     /**

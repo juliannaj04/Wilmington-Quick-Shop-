@@ -37,16 +37,36 @@ public class WQSAkinsJohnstonSlapshak {
     public static void displayInventory(String category) {
         switch (category) {
             case "food":
-                System.out.println("Food Inventory: " + Arrays.toString(foods));
+                System.out.println("Food Inventory: ");
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                for (FoodItem food : foods) {
+                    System.out.println(food);
+                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                }
                 break;
             case "household":
-                System.out.println("Household Inventory: " + Arrays.toString(households));
+                System.out.println("Household Inventory: ");
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                for (HouseholdItem household : households) {
+                    System.out.println(household);
+                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                }
                 break;
             case "electronics":
-                System.out.println("Electronics Inventory: " + Arrays.toString(electronics));
+                System.out.println("Electronics Inventory: ");
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                for (ElectronicsItem electronic : electronics) {
+                    System.out.println(electronic);
+                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                }
                 break;
             case "clothing":
-                System.out.println("Clothing Inventory: " + Arrays.toString(clothes));
+                System.out.println("Clothing Inventory: ");
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                for (ClothingItem cloth : clothes) {
+                    System.out.println(cloth);
+                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                }
                 break;
             default:
                 System.out.println("Invalid Category");

@@ -36,7 +36,7 @@ class FoodItem extends StoreItem {
      */
     @Override
     public String toString() {
-        return super.toString() + ", Expiration Date: " + expirationDate + ", Country of Origin: " + countryOfOrigin;
+        return super.toString() + ", Expiration Date: " + expirationDate + ", Country of Origin: " + countryOfOrigin + ", Returns: Denied";
     }
 
     /**

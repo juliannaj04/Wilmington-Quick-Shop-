@@ -34,7 +34,7 @@ class HouseholdItem extends StoreItem {
      */
     @Override
     public String toString() {
-        return super.toString() + ", Room Type: " + roomType;
+        return super.toString() + ", Room Type: " + roomType + ", Returns: Accepted - Cannot be damaged";
     }
 
     /**
