@@ -39,7 +39,7 @@ class ElectronicsItem extends StoreItem {
      */
     @Override
     public String toString() {
-        return super.toString() + ", Brand: " + brand + ", Year: " + year + ", Returns: Accepted - Cannot be damaged - Need ORIGINAL packaging";
+        return super.toString() + ", Brand: " + brand + ", Year: " + year;
     }
 
     /**
