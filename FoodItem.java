@@ -268,5 +268,10 @@ class ShelfStable extends FoodItem {
     public void setPackagingType(String packagingType) {
         this.packagingType = packagingType;
     }
+
+    @Override
+    public boolean getIsReturnable() {
+        return false;
+      }
 }
 

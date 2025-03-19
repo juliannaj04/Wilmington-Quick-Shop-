@@ -97,10 +97,24 @@ public class StoreItem {
        this.price = price;
     }
 
+    /**
+     * Setter method for guantity
+     * @param quantity int quantity
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
 
     }
+
+    /**
+     * Method to return the return policy
+     * @return true 
+     */
+
+    public boolean getIsReturnable() {
+      return true;
+    }
+
 
 
 }
