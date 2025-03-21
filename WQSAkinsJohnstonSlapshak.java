@@ -6,23 +6,23 @@ public class WQSAkinsJohnstonSlapshak {
 
     //Instances (At least 1 from each class at bottom of hierarchy)
     //Food Items
-    static Fruit apple = new Fruit("Apple","Fruit",.50, 10, "03/23/25", "Brazil", "Pome");
-    static ShelfStable cereal = new ShelfStable("Frosted Flakes", "Shelf Stable", 2.50, 8, "05/15/27", "Canada", "Box");
-    static Vegetable carrot = new Vegetable("Carrot", "Vegetable", .75, 4, "03/24/25", "United States", "Root");
+    static Fruit apple = new Fruit("Apple","Fruit",.50, 10, "No returns","03/23/25", "Brazil", "Pome");
+    static ShelfStable cereal = new ShelfStable("Frosted Flakes", "Shelf Stable", 2.50, 8, "No returns","05/15/27", "Canada", "Box");
+    static Vegetable carrot = new Vegetable("Carrot", "Vegetable", .75, 4, "No returns","03/24/25", "United States", "Root");
 
     //Household Items
-    static CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Laundry Room", true);
-    static Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Living Room", "Brown", "Leather");
+    static CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Accepted unopened","Laundry Room", true);
+    static Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Accepted unopened","Living Room", "Brown", "Leather");
 
     //Electronic Items
-    static Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Apple", 2023, 15);
-    static Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Apple", 2022, false, true);
-    static TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Roku", 2025, 32);
+    static Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Accepted IN ORIGINAL box","Apple", 2023, 15);
+    static Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Accepted IN ORIGINAL box", "Apple", 2022, false, true);
+    static TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Accepted IN ORIGINAL box","Roku", 2025, 32);
 
     //Clothing Items
-    static Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Blue", "polyester", "Medium", "Women's", "Columbia");
-    static Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
-    static Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Brown", "Leather", "8.5", "Women's", "Frye");
+    static Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Accepted with receipt (without receipt store credit)","Blue", "polyester", "Medium", "Women's", "Columbia");
+    static Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Accepted with receipt (without receipt store credit)","Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
+    static Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Accepted with receipt (without receipt store credit)","Brown", "Leather", "8.5", "Women's", "Frye");
 
     //Arrays to store items
     static FoodItem[] foods = {apple, cereal, carrot};
@@ -38,34 +38,34 @@ public class WQSAkinsJohnstonSlapshak {
         switch (category) {
             case "food":
                 System.out.println("Food Inventory: ");
-                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 for (FoodItem food : foods) {
                     System.out.println(food);
-                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 }
                 break;
             case "household":
                 System.out.println("Household Inventory: ");
-                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 for (HouseholdItem household : households) {
                     System.out.println(household);
-                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 }
                 break;
             case "electronics":
                 System.out.println("Electronics Inventory: ");
-                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 for (ElectronicsItem electronic : electronics) {
                     System.out.println(electronic);
-                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 }
                 break;
             case "clothing":
                 System.out.println("Clothing Inventory: ");
-                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 for (ClothingItem cloth : clothes) {
                     System.out.println(cloth);
-                    System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 }
                 break;
             default:
@@ -137,6 +137,8 @@ public class WQSAkinsJohnstonSlapshak {
             double price = scanner.nextDouble();
             System.out.print("Enter the quantity of " + name + ": ");
             int quantity = scanner.nextInt();
+            System.out.print("Enter the return policy of " + name + ": ");
+            String returnPolicy = scanner.nextLine();
             System.out.print("Enter the expiration date of " + name + ": ");
             String expirationDate = scanner.nextLine();
             scanner.nextLine();
@@ -150,19 +152,19 @@ public class WQSAkinsJohnstonSlapshak {
                 case "Fruit":
                     System.out.print("Enter the fruit group (i.e. Pome, Citrus, Berry): ");
                     String fruitGroup = scanner.nextLine();
-                    Fruit newFruit = new Fruit(name, "Fruit", price, quantity, expirationDate, countryOfOrigin, fruitGroup); // create new Fruit object based on user input
+                    Fruit newFruit = new Fruit(name, "Fruit", price, quantity, returnPolicy, expirationDate, countryOfOrigin, fruitGroup); // create new Fruit object based on user input
                     addInventory(newFruit);
                     break;
                 case "Vegetable":
                     System.out.print("Enter the vegetable group (i.e. Root, Starchy, Cruciferous): ");
                     String vegetableGroup = scanner.nextLine();
-                    Vegetable newVegetable = new Vegetable(name, "Vegetable", price, quantity, expirationDate, countryOfOrigin, vegetableGroup); // create new Vegetable object based on user input
+                    Vegetable newVegetable = new Vegetable(name, "Vegetable", price, quantity, returnPolicy, expirationDate, countryOfOrigin, vegetableGroup); // create new Vegetable object based on user input
                     addInventory(newVegetable);
                     break;
                 case "Shelf Stable":
                     System.out.print("Enter the packaging type: ");
                     String packagingType = scanner.nextLine();
-                    ShelfStable newShelfStable = new ShelfStable(name, "Shelf Stable", price, quantity, expirationDate, countryOfOrigin, packagingType); // create new ShelfStable object based on user input
+                    ShelfStable newShelfStable = new ShelfStable(name, "Shelf Stable", price, quantity, returnPolicy, expirationDate, countryOfOrigin, packagingType); // create new ShelfStable object based on user input
                     addInventory(newShelfStable);
                     break;
                 default:
@@ -223,6 +225,8 @@ public class WQSAkinsJohnstonSlapshak {
             double price = scanner.nextDouble();
             System.out.print("Enter the quantity of " + name + ": ");
             int quantity = scanner.nextInt();
+            System.out.print("Enter the return policy of " + name + ": ");
+            String returnPolicy = scanner.nextLine();
             System.out.print("Enter the room associated with " + name + ": ");
             String roomType = scanner.nextLine();
             scanner.nextLine();
@@ -233,7 +237,7 @@ public class WQSAkinsJohnstonSlapshak {
                 case "Cleaning Supply":
                     System.out.print("Is it toxic? (true/false): ");
                     boolean isToxic = scanner.nextBoolean();
-                    CleaningSupply newCleaningSupply = new CleaningSupply(name, "Cleaning Supply", price, quantity, roomType, isToxic);
+                    CleaningSupply newCleaningSupply = new CleaningSupply(name, "Cleaning Supply", price, quantity,returnPolicy, roomType, isToxic);
                     addInventory(newCleaningSupply);
                     break;
                 case "Furniture":
@@ -241,7 +245,7 @@ public class WQSAkinsJohnstonSlapshak {
                     String material = scanner.nextLine();
                     System.out.print("Enter the color: ");
                     String color = scanner.nextLine();
-                    Furniture newFurniture = new Furniture(name, "Furniture", price, quantity, roomType, color, material);
+                    Furniture newFurniture = new Furniture(name, "Furniture", price, quantity, returnPolicy, roomType, color, material);
                     addInventory(newFurniture);
                     break;
                 default:
@@ -300,6 +304,8 @@ public class WQSAkinsJohnstonSlapshak {
             double price = scanner.nextDouble();
             System.out.print("Enter the quantity of " + name + ": ");
             int quantity = scanner.nextInt();
+            System.out.print("Enter the return policy of " + name + ": ");
+            String returnPolicy = scanner.nextLine();
             System.out.print("Enter the brand of " + name + ": ");
             String brand = scanner.nextLine();
             scanner.nextLine();
@@ -313,7 +319,7 @@ public class WQSAkinsJohnstonSlapshak {
                 case "TV":
                     System.out.print("Enter the screen size: ");
                     int tvScreenSize = scanner.nextInt();
-                    TV newTV = new TV(name, "TV", price, quantity, brand, year, tvScreenSize);
+                    TV newTV = new TV(name, "TV", price, quantity, returnPolicy,brand, year, tvScreenSize);
                     addInventory(newTV);
                     break;
                 case "Phone":
@@ -321,13 +327,13 @@ public class WQSAkinsJohnstonSlapshak {
                     boolean isLandline = scanner.nextBoolean();
                     System.out.print("Is it a cellphone (true/false: )");
                     boolean isCellphone = scanner.nextBoolean();
-                    Phone newPhone = new Phone(name, "Phone", price, quantity, brand, year, isLandline,isCellphone);
+                    Phone newPhone = new Phone(name, "Phone", price, quantity,returnPolicy, brand, year, isLandline,isCellphone);
                     addInventory(newPhone);
                     break;
                 case "Laptop":
                     System.out.println("Enter the screen size: ");
                     int laptopScreenSize = scanner.nextInt();
-                    Laptop newLaptop = new Laptop(name, "Laptop", price, quantity, brand, year, laptopScreenSize);
+                    Laptop newLaptop = new Laptop(name, "Laptop", price, quantity,returnPolicy, brand, year, laptopScreenSize);
                     addInventory(newLaptop);
                     break;
                 default:
@@ -386,6 +392,8 @@ public class WQSAkinsJohnstonSlapshak {
             double price = scanner.nextDouble();
             System.out.print("Enter the quantity of " + name + ": ");
             int quantity = scanner.nextInt();
+            System.out.print("Enter the return policy of " + name + ": ");
+            String returnPolicy = scanner.nextLine();
             System.out.print("Enter the color of " + name + ": ");
             String color = scanner.nextLine();
             scanner.nextLine();
@@ -403,17 +411,17 @@ public class WQSAkinsJohnstonSlapshak {
 
             switch (clothingCategory) {
                 case "Outerwear":
-                    Outerwear newOuterwear = new Outerwear(name, "Outerwear", price, quantity, color, material, size, section, brand);
+                    Outerwear newOuterwear = new Outerwear(name, "Outerwear", price, quantity, returnPolicy, color, material, size, section, brand);
                     addInventory(newOuterwear);
                     break;
                 case "Shirt":
                     System.out.print("Enter the sleeve length: ");
                     String sleeveLength = scanner.nextLine();
-                    Shirt newShirt = new Shirt(name,"Shirt", price, quantity, color, material, size, section, brand, sleeveLength);
+                    Shirt newShirt = new Shirt(name,"Shirt", price, quantity,returnPolicy, color, material, size, section, brand, sleeveLength);
                     addInventory(newShirt);
                     break;
                 case "Shoe":
-                    Shoe newShoe = new Shoe(name, "Outerwear", price, quantity, color, material, size, section, brand);
+                    Shoe newShoe = new Shoe(name, "Outerwear", price, quantity, returnPolicy, color, material, size, section, brand);
                     addInventory(newShoe);
                     break;
                 default:

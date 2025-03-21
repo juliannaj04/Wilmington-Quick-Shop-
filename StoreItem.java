@@ -15,6 +15,7 @@ public class StoreItem {
     private String category;
     private double price;
     private int quantity;
+    private String returnPolicy;
 
     /**
      * Constructor method with all attributes besides quantity as parameters
@@ -22,12 +23,14 @@ public class StoreItem {
      * @param category the category the item belongs in (i.e. fruit, furniture, clothing)
      * @param price the price of the item
      * @param quantity the quantity of the item
+     * @param returnPolicy the return policy of an item
      */
-    public StoreItem(String name, String category, double price, int quantity) {
+    public StoreItem(String name, String category, double price, int quantity, String returnPolicy) {
        this.name = name;
        this.category = category;
        this.price = price;
        this.quantity = quantity;
+       this.returnPolicy = returnPolicy;
 
    }
 
@@ -37,7 +40,7 @@ public class StoreItem {
      */
    @Override
    public String toString() {
-        return "Name: " + name + " , Category: " + category + " , Price: " + price + " , Quantity: " + quantity;
+        return "Name: " + name + " , Category: " + category + " , Price: " + price + " , Quantity: " + quantity + " , Return Policy: " + returnPolicy;
    }
 
     /**
@@ -74,6 +77,16 @@ public class StoreItem {
     }
 
     /**
+     * Getter method for return policy
+     * @return instance of string return policy
+     */
+    public String getReturnPolicy() {
+        return this.returnPolicy;
+    }
+
+
+
+    /**
      * Setter method for name
      * @param name String name
      */
@@ -98,7 +111,7 @@ public class StoreItem {
     }
 
     /**
-     * Setter method for guantity
+     * Setter method for quantity
      * @param quantity int quantity
      */
     public void setQuantity(int quantity) {
@@ -107,13 +120,14 @@ public class StoreItem {
     }
 
     /**
-     * Method to return the return policy
-     * @return true 
+     * Setter method for return policy
+     * @param returnPolicy String return policy
      */
+    public void setReturnPolicy(String returnPolicy) {
+        this.returnPolicy = returnPolicy;
 
-    public boolean getIsReturnable() {
-      return true;
     }
+
 
 
 

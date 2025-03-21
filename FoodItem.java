@@ -22,8 +22,8 @@ class FoodItem extends StoreItem {
      * @param expirationDate String expiration date
      * @param countryOfOrigin String country of origin (i.e. where it was grown/produced/made)
      */
-    public FoodItem(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin) {
-        super(name, category, price, quantity);
+    public FoodItem(String name, String category, double price, int quantity, String returnPolicy, String expirationDate, String countryOfOrigin) {
+        super(name, category, price, quantity, returnPolicy);
         this.expirationDate = expirationDate;
         this.countryOfOrigin = countryOfOrigin;
     }
@@ -101,8 +101,8 @@ class Fruit extends FoodItem {
      * @param countryOfOrigin String countryOfOrigin
      * @param fruitGroup - String fruitGroup (i.e. berry, melon, tropical, citrus)
      */
-    public Fruit(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin, String fruitGroup) {
-        super(name, category, price, quantity, expirationDate, countryOfOrigin);
+    public Fruit(String name, String category, double price, int quantity, String returnPolicy, String expirationDate, String countryOfOrigin, String fruitGroup) {
+        super(name, category, price, quantity,returnPolicy, expirationDate, countryOfOrigin);
         this.fruitGroup = fruitGroup;
     }
 
@@ -163,8 +163,8 @@ class Vegetable extends FoodItem {
      * @param countryOfOrigin String countryOfOrigin
      * @param vegetableGroup String vegetableGroup (i.e. root, cruciferous, legumes, starchy)
      */
-    public Vegetable(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin, String vegetableGroup) {
-        super(name, category, price, quantity, expirationDate, countryOfOrigin);
+    public Vegetable(String name, String category, double price, int quantity, String returnPolicy, String expirationDate, String countryOfOrigin, String vegetableGroup) {
+        super(name, category, price, quantity, returnPolicy, expirationDate, countryOfOrigin);
         this.vegetableGroup = vegetableGroup;
 
     }
@@ -222,12 +222,13 @@ class ShelfStable extends FoodItem {
      * @param category String category
      * @param price double price
      * @param quantity int quantity
+     * @param returnPolicy String returnPolicy
      * @param expirationDate String expiration date
      * @param countryOfOrigin String country of origin
      * @param packagingType String packaging type (i.e. can, box, tin)
      */
-    public ShelfStable(String name, String category, double price, int quantity, String expirationDate, String countryOfOrigin, String packagingType) {
-        super(name, category, price, quantity, expirationDate, countryOfOrigin);
+    public ShelfStable(String name, String category, double price, int quantity, String returnPolicy, String expirationDate, String countryOfOrigin, String packagingType) {
+        super(name, category, price, quantity, returnPolicy, expirationDate, countryOfOrigin);
         this.packagingType = packagingType;
     }
 
@@ -269,9 +270,6 @@ class ShelfStable extends FoodItem {
         this.packagingType = packagingType;
     }
 
-    @Override
-    public boolean getIsReturnable() {
-        return false;
-      }
+
 }
 

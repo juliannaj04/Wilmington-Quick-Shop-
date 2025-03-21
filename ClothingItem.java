@@ -29,13 +29,14 @@ class ClothingItem extends StoreItem {
      * @param section String section (i.e. children's, men's, women's)
      * @param brand String
      */
-    public ClothingItem(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
-        super(name, category, price, quantity);
+    public ClothingItem(String name, String category, double price, int quantity, String returnPolicy, String color, String material, String size, String section, String brand) {
+        super(name, category, price, quantity, returnPolicy);
         this.color = color;
         this.material = material;
         this.size = size;
         this.section = section;
         this.brand = brand;
+
     }
 
     /**
@@ -150,6 +151,7 @@ class Shirt extends ClothingItem {
      * @param category String
      * @param price double
      * @param quantity int
+     * @param returnPolicy String
      * @param color String
      * @param material String
      * @param size String
@@ -157,8 +159,8 @@ class Shirt extends ClothingItem {
      * @param brand String
      * @param sleeveLength String (i.e.t-shirt, long sleeve, tank top)
      */
-    public Shirt(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand, String sleeveLength) {
-        super(name, category, price, quantity, color, material, size, section, brand);
+    public Shirt(String name, String category, double price, int quantity, String returnPolicy, String color, String material, String size, String section, String brand, String sleeveLength) {
+        super(name, category, price, quantity, returnPolicy, color, material, size, section, brand);
         this.sleeveLength = sleeveLength;
 
     }
@@ -215,14 +217,15 @@ class Shoe extends ClothingItem {
      * @param category String
      * @param price double
      * @param quantity int
+     * @param returnPolicy String
      * @param color String
      * @param material String
      * @param size String
      * @param section String
      * @param brand String
      */
-    public Shoe(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
-        super(name, category, price, quantity, color, material, size, section, brand);
+    public Shoe(String name, String category, double price, int quantity, String returnPolicy,  String color, String material, String size, String section, String brand) {
+        super(name, category, price, quantity,returnPolicy, color, material, size, section, brand);
 
     }
 
@@ -263,14 +266,15 @@ class Outerwear extends ClothingItem {
      * @param category String
      * @param price double
      * @param quantity int
+     * @param returnPolicy String
      * @param color String
      * @param material String
      * @param size String
      * @param section String
      * @param brand String
      */
-    public Outerwear(String name, String category, double price, int quantity, String color, String material, String size, String section, String brand) {
-        super(name, category, price, quantity, color, material, size, section, brand);
+    public Outerwear(String name, String category, double price, int quantity, String returnPolicy, String color, String material, String size, String section, String brand) {
+        super(name, category, price, quantity, returnPolicy, color, material, size, section, brand);
 
     }
 

@@ -24,8 +24,8 @@ class ElectronicsItem extends StoreItem {
      * @param brand String brand (i.e. Samsung, Apple, Roku)
      * @param year int year - the year the item came out
      */
-    public ElectronicsItem(String name, String category, double price, int quantity, String brand, int year) {
-        super(name, category, price, quantity);
+    public ElectronicsItem(String name, String category, double price, int quantity, String returnPolicy, String brand, int year) {
+        super(name, category, price, quantity, returnPolicy);
         this.brand = brand;
         this.year = year;
 
@@ -107,8 +107,8 @@ class TV extends ElectronicsItem {
      * @param screenSize int - screen size in inches
      *
      */
-    public TV(String name, String category, double price, int quantity, String brand, int year, int screenSize) {
-        super(name, category, price, quantity, brand, year);
+    public TV(String name, String category, double price, int quantity, String returnPolicy, String brand, int year, int screenSize) {
+        super(name, category, price, quantity,returnPolicy, brand, year);
         this.screenSize = screenSize;
 
     }
@@ -172,8 +172,8 @@ class Phone extends ElectronicsItem {
      * @param isLandline boolean
      * @param isCellphone boolean
      */
-    public Phone(String name, String category, double price, int quantity, String brand, int year, boolean isLandline, boolean isCellphone) {
-        super(name, category, price, quantity, brand, year);
+    public Phone(String name, String category, double price, int quantity,String returnPolicy, String brand, int year, boolean isLandline, boolean isCellphone) {
+        super(name, category, price, quantity,returnPolicy, brand, year);
         this.isLandline = isLandline;
         this.isCellphone = isCellphone;
 
@@ -252,8 +252,8 @@ class Laptop extends ElectronicsItem {
      * @param year int
      * @param screenSize int - screen size in inches
      */
-    public Laptop(String name, String category, double price, int quantity, String brand, int year, int screenSize) {
-        super(name, category, price, quantity, brand, year);
+    public Laptop(String name, String category, double price, int quantity, String returnPolicy, String brand, int year, int screenSize) {
+        super(name, category, price, quantity, returnPolicy, brand, year);
         this.screenSize = screenSize;
 
     }
