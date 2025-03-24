@@ -439,7 +439,7 @@ public class WQSAkinsJohnstonSlapshak {
      * Decreases quantity of ClothingItem
      */
     public static void sellClothingItem(){
-        System.out.print("What is the name of the clothing item you would like to add more of? ");
+        System.out.print("What is the name of the clothing item you would like to sell? ");
         String item = scanner.nextLine();
 
         for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
