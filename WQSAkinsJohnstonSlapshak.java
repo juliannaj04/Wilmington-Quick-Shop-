@@ -446,7 +446,8 @@ public class WQSAkinsJohnstonSlapshak {
                     System.out.println("Error - Negative Quantity not possible");
                     clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
                 } else {
-                    System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity()); //display updated quantity
+                    System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity());
+                    System.out.println(returnPolicy);//display updated quantity
                 }
             }
         }
