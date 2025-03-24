@@ -8,7 +8,7 @@
 /**
  * Food Item Class: Subclass of StoreItem
  * 2 additional attributes: String expirationDate, String countryOfOrigin
- * Inherited attributes: String name, String category, double price, int quantity
+ * Inherited attributes: String name, String category, double price, int quantity, String returnPolicy
  */
 class FoodItem extends StoreItem {
     private String expirationDate;
@@ -49,6 +49,14 @@ class FoodItem extends StoreItem {
     public String getCategory() {
         return "Food";
     }
+
+    /**
+     * Method that overrides getReturnPolicy method
+     * Example of polymorphism
+     * @return String returnPolicy
+     */
+    @Override
+    public String getReturnPolicy() {return "No returns"; }
 
     /**
      * Getter method for expiration date

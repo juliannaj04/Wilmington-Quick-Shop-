@@ -192,6 +192,7 @@ public class WQSAkinsJohnstonSlapshak {
                     food.setQuantity(food.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + food.getQuantity()); // display updated quantity
+                    System.out.println(food.getReturnPolicy());
                 }
             }
         }
@@ -268,8 +269,10 @@ public class WQSAkinsJohnstonSlapshak {
                 if (householdItem.getQuantity() < 0) { //error check
                     System.out.println("Error - Negative Quantity not possible");
                     householdItem.setQuantity(householdItem.getQuantity() + amount); //revert quantity change
+                    System.out.println(householdItem.getReturnPolicy());
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + householdItem.getQuantity()); //display updated quantity
+                    System.out.println(householdItem.getReturnPolicy());
                 }
 
             }
@@ -357,8 +360,10 @@ public class WQSAkinsJohnstonSlapshak {
                 if (electronicsItem.getQuantity() < 0) { //error check
                     System.out.println("Error - Negative Quantity not possible");
                     electronicsItem.setQuantity(electronicsItem.getQuantity() + amount); //revert quantity change
+                    System.out.println(electronicsItem.getReturnPolicy());
                 } else {
                     System.out.println("Updated quantity of " + item + ": " + electronicsItem.getQuantity()); //display updated quantity
+                    System.out.println("Updated quantity of " + item + ": " + electronicsItem.getQuantity());
                 }
             }
         }
@@ -447,7 +452,7 @@ public class WQSAkinsJohnstonSlapshak {
                     clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
                 } else {
                     System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity());
-                    System.out.println(returnPolicy);//display updated quantity
+                    System.out.println(clothingItem.getReturnPolicy());
                 }
             }
         }
@@ -506,7 +511,7 @@ public class WQSAkinsJohnstonSlapshak {
                 } else {
                     System.out.println("Invalid category");
                 }
-                // DISPLAY RETURN POLICY HERE
+                // DISPLAYS RETURN POLICY HERE
 
             // QUIT
             } else if (action.equals("quit")) {

@@ -8,7 +8,7 @@
 /**
  * ClothingItem Class: Subclass of Store Item
  * 5 additional attribute: String color, String material, String size, String section, String brand
- * Inherited attributes: String name, String category, double price, int quantity
+ * Inherited attributes: String name, String category, double price, int quantity, String returnPolicy
  */
 class ClothingItem extends StoreItem {
     private String color;
@@ -23,6 +23,7 @@ class ClothingItem extends StoreItem {
      * @param category String category
      * @param price double price
      * @param quantity int
+     * @param returnPolicy String
      * @param color String color of the item
      * @param material String material (i.e. cotton, polyester)
      * @param size String size (i.e. small, medium, large)
@@ -53,12 +54,21 @@ class ClothingItem extends StoreItem {
     /**
      * Method that overrides getCategory method
      * Labels every instance of ClothingItem as Clothing
+     * example of polymorphism
      * @return String "Clothing"
      */
     @Override
     public String getCategory() {
         return "Clothing";
     }
+
+    /**
+     * Method that overrides getReturnPolicy method
+     * Example of polymorphism
+     * @return String return policy
+     */
+    @Override
+    public String getReturnPolicy() { return "Returnable with Receipt within 30 Days";}
 
     /**
      * Getter method for color
@@ -140,7 +150,7 @@ class ClothingItem extends StoreItem {
 /**
  * Shirt Class: Subclass of ClothingItem
  * 1 additional attribute: String sleeveLength
- * Inherited attributes: String name, String category, double price, int quantity, String color, String material, String size, String section, String brand
+ * Inherited attributes: String name, String category, double price, int quantity, String returnPolicy, String color, String material, String size, String section, String brand
  */
 class Shirt extends ClothingItem {
     private String sleeveLength;
@@ -179,6 +189,7 @@ class Shirt extends ClothingItem {
     /**
      * Method that overrides getCategory method
      * Labels every instance of Shirt class as "Shirt" category
+     * Example of polymorphism
      * @return String "Shirt"
      */
     @Override

@@ -54,6 +54,14 @@ class ElectronicsItem extends StoreItem {
     }
 
     /**
+     * Method that overrides getReturnPolicy method
+     * Example of polymorphism
+     * @return String returnPolicy
+     */
+    @Override
+    public String getReturnPolicy() {return "Returnable within 30 Days with Receipt"; }
+
+    /**
      * Getter method for brand
      * @return String brand
      */
@@ -237,7 +245,7 @@ class Phone extends ElectronicsItem {
 /**
  * Laptop Class: Subclass of ElectronicsItem
  * 1 additional attribute: String screenSize
- * Inherited attributes: String name, String category, double price, int quantity, String brand, int year
+ * Inherited attributes: String name, String category, double price, int quantity, String brand, int year, String returnPolicy
  */
 class Laptop extends ElectronicsItem {
     private int screenSize;
@@ -248,6 +256,7 @@ class Laptop extends ElectronicsItem {
      * @param category String
      * @param price double
      * @param quantity int
+     * @param returnPolicy String
      * @param brand String
      * @param year int
      * @param screenSize int - screen size in inches

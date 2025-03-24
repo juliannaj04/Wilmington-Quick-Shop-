@@ -177,6 +177,14 @@ class Furniture extends HouseholdItem {
     }
 
     /**
+     * Method that overrides getReturnPolicy
+     * Example of polymorphism
+     * @return String returnPolicy
+     */
+    @Override
+    public String getReturnPolicy() {return "Returnable within 30 Days with Receipt"; }
+
+    /**
      * Getter method for color
      * @return String color
      */
