@@ -11,18 +11,18 @@ public class WQSAkinsJohnstonSlapshak {
     static Vegetable carrot = new Vegetable("Carrot", "Vegetable", .75, 4, "No returns","03/24/25", "United States", "Root");
 
     //Household Items
-    static CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Accepted unopened","Laundry Room", true);
-    static Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Accepted unopened","Living Room", "Brown", "Leather");
+    static CleaningSupply laundryDetergent = new CleaningSupply("Tide Pods", "Cleaning Supply", 6.00, 6, "Returnable with Receipt within 30 Days","Laundry Room", true);
+    static Furniture chair = new Furniture("Recliner", "Furniture", 149.99, 2, "Returnable with Receipt within 30 Days","Living Room", "Brown", "Leather");
 
     //Electronic Items
-    static Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Accepted IN ORIGINAL box","Apple", 2023, 15);
-    static Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Accepted IN ORIGINAL box", "Apple", 2022, false, true);
-    static TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Accepted IN ORIGINAL box","Roku", 2025, 32);
+    static Laptop macbook = new Laptop("Macbook Pro", "Laptop", 600.00, 5, "Returnable with Receipt within 30 Days","Apple", 2023, 15);
+    static Phone iPhone = new Phone("iPhone 14", "Phone", 400.00, 7, "Returnable with Receipt within 30 Days", "Apple", 2022, false, true);
+    static TV rokuTV = new TV("Roku TV", "TV", 150.00, 9, "Returnable with Receipt within 30 Days","Roku", 2025, 32);
 
     //Clothing Items
-    static Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Accepted with receipt (without receipt store credit)","Blue", "polyester", "Medium", "Women's", "Columbia");
-    static Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Accepted with receipt (without receipt store credit)","Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
-    static Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Accepted with receipt (without receipt store credit)","Brown", "Leather", "8.5", "Women's", "Frye");
+    static Outerwear rainJacket = new Outerwear("Rain Jacket", "Outerwear", 39.99, 12, "Returnable with Receipt within 30 Days","Blue", "polyester", "Medium", "Women's", "Columbia");
+    static Shirt tShirt = new Shirt("T-Shirt", "Shirt", 15.00, 18, "Returnable with Receipt within 30 Days","Green", "Cotton", "Large", "Men's", "Hanes", "Short Sleeve");
+    static Shoe boots = new Shoe("Cowboy Boots", "Shoes", 79.95, 4, "Returnable with Receipt within 30 Days","Brown", "Leather", "8.5", "Women's", "Frye");
 
     //Arrays to store items
     static FoodItem[] foods = {apple, cereal, carrot};
@@ -139,9 +139,9 @@ public class WQSAkinsJohnstonSlapshak {
             int quantity = scanner.nextInt();
             System.out.print("Enter the return policy of " + name + ": ");
             String returnPolicy = scanner.nextLine();
+            scanner.nextLine();
             System.out.print("Enter the expiration date of " + name + ": ");
             String expirationDate = scanner.nextLine();
-            scanner.nextLine();
             System.out.print("Enter the country of origin of " + name + ": ");
             String countryOfOrigin = scanner.nextLine();
 
@@ -228,9 +228,9 @@ public class WQSAkinsJohnstonSlapshak {
             int quantity = scanner.nextInt();
             System.out.print("Enter the return policy of " + name + ": ");
             String returnPolicy = scanner.nextLine();
+            scanner.nextLine();
             System.out.print("Enter the room associated with " + name + ": ");
             String roomType = scanner.nextLine();
-            scanner.nextLine();
             System.out.print("What category of household item is this? (Cleaning Supply/ Furniture): ");
             String householdItemCategory = scanner.nextLine();
 
@@ -309,9 +309,9 @@ public class WQSAkinsJohnstonSlapshak {
             int quantity = scanner.nextInt();
             System.out.print("Enter the return policy of " + name + ": ");
             String returnPolicy = scanner.nextLine();
+            scanner.nextLine();
             System.out.print("Enter the brand of " + name + ": ");
             String brand = scanner.nextLine();
-            scanner.nextLine();
             System.out.print("Enter the year of " + name + ": ");
             int year = scanner.nextInt();
 
@@ -399,9 +399,9 @@ public class WQSAkinsJohnstonSlapshak {
             int quantity = scanner.nextInt();
             System.out.print("Enter the return policy of " + name + ": ");
             String returnPolicy = scanner.nextLine();
+            scanner.nextLine();
             System.out.print("Enter the color of " + name + ": ");
             String color = scanner.nextLine();
-            scanner.nextLine();
             System.out.print("Enter the material of " + name + ": ");
             String material = scanner.nextLine();
             System.out.print("Enter the size of " + name + ": ");
@@ -451,7 +451,7 @@ public class WQSAkinsJohnstonSlapshak {
                     System.out.println("Error - Negative Quantity not possible");
                     clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
                 } else {
-                    System.out.println("Updated quantity of" + item + ": " + clothingItem.getQuantity());
+                    System.out.println("Updated quantity of " + item + ": " + clothingItem.getQuantity());
                     System.out.println(clothingItem.getReturnPolicy());
                 }
             }
