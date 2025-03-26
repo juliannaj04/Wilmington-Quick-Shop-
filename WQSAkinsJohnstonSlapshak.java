@@ -1,8 +1,8 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class WQSAkinsJohnstonSlapshak {
     static Scanner scanner = new Scanner(System.in);
+    static Map<String, Integer> order = new HashMap<>();
 
     //Instances (At least 1 from each class at bottom of hierarchy)
     //Food Items
@@ -178,7 +178,7 @@ public class WQSAkinsJohnstonSlapshak {
     /**
      * Decreases quantity of FoodItem
      */
-    public static void sellFoodItem(){
+    /*public static void sellFoodItem(){
         System.out.print("What is the name of the food item you would like to sell? ");
         String item = scanner.nextLine();
 
@@ -196,7 +196,7 @@ public class WQSAkinsJohnstonSlapshak {
                 }
             }
         }
-    }
+    }*/
     /**
      * Helper method for addInventory
      * Adds new HouseHold item to the inventory based on subclass - Cleaning Supply, Furniture
@@ -257,7 +257,7 @@ public class WQSAkinsJohnstonSlapshak {
     /**
      * Decreases quantity of HouseholdItem
      */
-    public static void sellHouseholdItem(){
+    /*public static void sellHouseholdItem(){
         System.out.print("What is the name of the household item would you like to sell? ");
         String item = scanner.nextLine();
 
@@ -277,7 +277,7 @@ public class WQSAkinsJohnstonSlapshak {
 
             }
         }
-    }
+    }*/
     /**
      * Helper method for addInventory
      * Adds new electronics item to the inventory based on subclass - TV, Phone, Laptop
@@ -348,7 +348,7 @@ public class WQSAkinsJohnstonSlapshak {
     /**
      * Decreases quantity of ElectronicItem
      */
-    public static void sellElectronicItem(){
+    /*public static void sellElectronicItem(){
         System.out.print("What is the name of the electronics item you would like to sell? ");
         String item = scanner.nextLine();
 
@@ -367,7 +367,7 @@ public class WQSAkinsJohnstonSlapshak {
                 }
             }
         }
-    }
+    }*/
     /**
      * Helper method for addInventory
      * Adds new clothing item to the inventory based on subclass - Outerwear, Shirt, Shoe
@@ -438,7 +438,7 @@ public class WQSAkinsJohnstonSlapshak {
     /**
      * Decreases quantity of ClothingItem
      */
-    public static void sellClothingItem(){
+    /*public static void sellClothingItem(){
         System.out.print("What is the name of the clothing item you would like to sell? ");
         String item = scanner.nextLine();
 
@@ -456,6 +456,123 @@ public class WQSAkinsJohnstonSlapshak {
                 }
             }
         }
+    }*/
+
+
+    
+    /**
+     * Allows users to add multiple items from different categories before checkout.
+     */
+    public static void sellItems() {
+        while (true) {
+            System.out.print("Enter the category of the item (food/household/electronics/clothing) or 'checkout' to proceed: ");
+            String category = scanner.nextLine();
+
+            if (category.equalsIgnoreCase("checkout")) {
+                checkout();
+                break;
+            }
+
+            displayInventory(category);
+            StoreItem selectedItem = selectItem(category);
+            if (selectedItem == null) continue;
+
+            System.out.print("Enter quantity: ");
+            int quantity = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            if (quantity > selectedItem.getQuantity()) {
+                System.out.println("Not enough stock available.");
+                continue;
+            }
+
+            order.put(selectedItem.getName(), order.getOrDefault(selectedItem.getName(), 0) + quantity);
+            System.out.println(quantity + "x " + selectedItem.getName() + " added to order.");
+        }
+    }
+
+    /**
+     * Displays the order summary and confirms checkout.
+     */
+    public static void checkout() {
+        if (order.isEmpty()) {
+            System.out.println("No items in the order. Checkout canceled.");
+            return;
+        }
+
+        System.out.println("\nOrder Summary:");
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            System.out.println(entry.getKey() + " x " + entry.getValue());
+        }
+
+        System.out.print("Confirm checkout? (yes/no): ");
+        String confirm = scanner.nextLine();
+
+        if (confirm.equalsIgnoreCase("yes")) {
+            for (Map.Entry<String, Integer> entry : order.entrySet()) {
+                StoreItem item = findItem(entry.getKey());
+                if (item != null) {
+                    item.setQuantity(item.getQuantity() - entry.getValue());
+                }
+            }
+            System.out.println("Order completed!");
+        } else {
+            System.out.println("Checkout canceled.");
+        }
+        order.clear();
+    }
+
+    /**
+     * Allows users to select an item from a given category.
+     */
+    public static StoreItem selectItem(String category) {
+        StoreItem[] items = getCategoryArray(category);
+        if (items == null) {
+            System.out.println("Invalid category. Try again.");
+            return null;
+        }
+
+        System.out.print("Enter the item name: ");
+        String itemName = scanner.nextLine();
+        return findItem(itemName);
+    }
+
+    /**
+     * Finds an item across all categories.
+     */
+    public static StoreItem findItem(String name) {
+        StoreItem[] allItems = mergeAllItems();
+        for (StoreItem item : allItems) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the corresponding inventory array based on category.
+     */
+    public static StoreItem[] getCategoryArray(String category) {
+        switch (category.toLowerCase()) {
+            case "food": return foods;
+            case "household": return households;
+            case "electronics": return electronics;
+            case "clothing": return clothes;
+            default: return null;
+        }
+    }
+
+    /**
+     * Merges all inventory items into a single array for searching.
+     */
+    public static StoreItem[] mergeAllItems() {
+        List<StoreItem> allItems = new ArrayList<>();
+        allItems.addAll(Arrays.asList(foods));
+        allItems.addAll(Arrays.asList(households));
+        allItems.addAll(Arrays.asList(electronics));
+        allItems.addAll(Arrays.asList(clothes));
+        return allItems.toArray(new StoreItem[0]);
     }
 
     public static void main(String[] args) {
@@ -490,27 +607,12 @@ public class WQSAkinsJohnstonSlapshak {
 
             // SELL
             } else if (action.equals("sell")) {
-                System.out.print("What type of item would you like to sell? (food/household/electronics/clothing): ");
-                String category = scanner.nextLine();
+                //System.out.print("What type of item would you like to sell? (food/household/electronics/clothing): ");
+                //String category = scanner.nextLine();
 
-                displayInventory(category);
+                //displayInventory(category);
 
-                // call appropriate method based on category
-                if (category.equals("food")) {
-                    sellFoodItem();
-                    displayInventory("food");
-                } else if (category.equals("household")) {
-                    sellHouseholdItem();
-                    displayInventory("household");
-                } else if (category.equals("electronics")) {
-                    sellElectronicItem();
-                    displayInventory("electronics");
-                } else if (category.equals("clothing")) {
-                    sellClothingItem();
-                    displayInventory("clothing");
-                } else {
-                    System.out.println("Invalid category");
-                }
+                sellItems();
                 // DISPLAYS RETURN POLICY HERE
 
             // QUIT
@@ -522,6 +624,6 @@ public class WQSAkinsJohnstonSlapshak {
 
 
         }
-
+        
     }
 }
