@@ -176,28 +176,7 @@ public class WQSAkinsJohnstonSlapshak {
         }
 
     }
-    /**
-     * Decreases quantity of FoodItem
-     */
-    /*public static void sellFoodItem(){
-        System.out.print("What is the name of the food item you would like to sell? ");
-        String item = scanner.nextLine();
 
-        for (FoodItem food: foods) { // for each food in the foods array
-            if (food.getName().equals(item)) {
-                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
-                int amount = scanner.nextInt();
-                food.setQuantity(food.getQuantity() - amount); //decrease quantity
-                if (food.getQuantity() < 0) { //error check
-                    System.out.print("Error - Negative Quantity not possible - Changes reverted");
-                    food.setQuantity(food.getQuantity() + amount); //revert quantity change
-                } else {
-                    System.out.println("Updated quantity of " + item + ": " + food.getQuantity()); // display updated quantity
-                    System.out.println(food.getReturnPolicy());
-                }
-            }
-        }
-    }*/
     /**
      * Helper method for addInventory
      * Adds new HouseHold item to the inventory based on subclass - Cleaning Supply, Furniture
@@ -255,30 +234,7 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
-    /**
-     * Decreases quantity of HouseholdItem
-     */
-    /*public static void sellHouseholdItem(){
-        System.out.print("What is the name of the household item would you like to sell? ");
-        String item = scanner.nextLine();
 
-        for (HouseholdItem householdItem: households) { // for each household item in the households array
-            if (householdItem.getName().equals(item)) {
-                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
-                int amount = scanner.nextInt();
-                householdItem.setQuantity(householdItem.getQuantity() - amount); //decrease quantity
-                if (householdItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
-                    householdItem.setQuantity(householdItem.getQuantity() + amount); //revert quantity change
-                    System.out.println(householdItem.getReturnPolicy());
-                } else {
-                    System.out.println("Updated quantity of " + item + ": " + householdItem.getQuantity()); //display updated quantity
-                    System.out.println(householdItem.getReturnPolicy());
-                }
-
-            }
-        }
-    }*/
     /**
      * Helper method for addInventory
      * Adds new electronics item to the inventory based on subclass - TV, Phone, Laptop
@@ -346,29 +302,7 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
-    /**
-     * Decreases quantity of ElectronicItem
-     */
-    /*public static void sellElectronicItem(){
-        System.out.print("What is the name of the electronics item you would like to sell? ");
-        String item = scanner.nextLine();
 
-        for (ElectronicsItem electronicsItem: electronics) { // for each electronics item in the electronics array
-            if (electronicsItem.getName().equals(item)) {
-                System.out.print("How many " + item + "(s)" +  " would you like to remove? ");
-                int amount = scanner.nextInt();
-                electronicsItem.setQuantity(electronicsItem.getQuantity() - amount); //update quantity
-                if (electronicsItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
-                    electronicsItem.setQuantity(electronicsItem.getQuantity() + amount); //revert quantity change
-                    System.out.println(electronicsItem.getReturnPolicy());
-                } else {
-                    System.out.println("Updated quantity of " + item + ": " + electronicsItem.getQuantity()); //display updated quantity
-                    System.out.println("Updated quantity of " + item + ": " + electronicsItem.getQuantity());
-                }
-            }
-        }
-    }*/
     /**
      * Helper method for addInventory
      * Adds new clothing item to the inventory based on subclass - Outerwear, Shirt, Shoe
@@ -649,10 +583,6 @@ public class WQSAkinsJohnstonSlapshak {
 
             // SELL
             } else if (action.equals("sell")) {
-                //System.out.print("What type of item would you like to sell? (food/household/electronics/clothing): ");
-                //String category = scanner.nextLine();
-
-                //displayInventory(category);
 
                 sellItems();
                 // DISPLAYS RETURN POLICY HERE
