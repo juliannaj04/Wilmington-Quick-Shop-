@@ -436,29 +436,6 @@ public class WQSAkinsJohnstonSlapshak {
             }
         }
     }
-    /**
-     * Decreases quantity of ClothingItem
-     */
-    /*public static void sellClothingItem(){
-        System.out.print("What is the name of the clothing item you would like to sell? ");
-        String item = scanner.nextLine();
-
-        for (ClothingItem clothingItem : clothes) { // for each clothingItem item in the clothes array
-            if (clothingItem.getName().equals(item)) {
-                System.out.print("How many " + item + "(s)" + " would you like to remove? ");
-                int amount = scanner.nextInt();
-                clothingItem.setQuantity(clothingItem.getQuantity() - amount);
-                if (clothingItem.getQuantity() < 0) { //error check
-                    System.out.println("Error - Negative Quantity not possible");
-                    clothingItem.setQuantity(clothingItem.getQuantity() + amount); //revert quantity change
-                } else {
-                    System.out.println("Updated quantity of " + item + ": " + clothingItem.getQuantity());
-                    System.out.println(clothingItem.getReturnPolicy());
-                }
-            }
-        }
-    }*/
-
 
     
     /**
