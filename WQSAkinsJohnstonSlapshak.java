@@ -124,6 +124,7 @@ public class WQSAkinsJohnstonSlapshak {
                 if (food.getName().equals(item)) {
                     System.out.println("How many " + item + " would you like to add? "); // FIX LATER
                     int amount = scanner.nextInt();
+                    scanner.nextLine();
                     food.setQuantity(food.getQuantity() + amount);
                     System.out.println("Updated quantity of " + item + ": " + food.getQuantity()); // increase quantity
 
@@ -464,12 +465,14 @@ public class WQSAkinsJohnstonSlapshak {
      * Allows users to add multiple items from different categories before checkout.
      */
     public static void sellItems() {
+        Map<String, Map<String, Integer>> categorizedOrder = new HashMap<>();
+        
         while (true) {
             System.out.print("Enter the category of the item (food/household/electronics/clothing) or 'checkout' to proceed: ");
             String category = scanner.nextLine();
 
             if (category.equalsIgnoreCase("checkout")) {
-                checkout();
+                checkout(categorizedOrder);
                 break;
             }
 
@@ -486,40 +489,102 @@ public class WQSAkinsJohnstonSlapshak {
                 continue;
             }
 
-            order.put(selectedItem.getName(), order.getOrDefault(selectedItem.getName(), 0) + quantity);
+            // Organize order by category
+            categorizedOrder.putIfAbsent(category, new HashMap<>());
+            Map<String, Integer> categoryItems = categorizedOrder.get(category);
+            categoryItems.put(selectedItem.getName(), 
+                categoryItems.getOrDefault(selectedItem.getName(), 0) + quantity);
+            
             System.out.println(quantity + "x " + selectedItem.getName() + " added to order.");
         }
     }
 
     /**
      * Displays the order summary and confirms checkout.
+     * @param categorizedOrder Order organized by category
      */
-    public static void checkout() {
-        if (order.isEmpty()) {
+    public static void checkout(Map<String, Map<String, Integer>> categorizedOrder) {
+        if (categorizedOrder.isEmpty()) {
             System.out.println("No items in the order. Checkout canceled.");
             return;
         }
 
-        System.out.println("\nOrder Summary:");
-        for (Map.Entry<String, Integer> entry : order.entrySet()) {
-            System.out.println(entry.getKey() + " x " + entry.getValue());
+        // Tax rates
+        final double FOOD_TAX_RATE = 0.02; // 2% tax on food items
+        final double NON_FOOD_TAX_RATE = 0.07; // 7% tax on non-food items
+
+        System.out.println("\n--- Order Summary ---");
+        double totalBeforeTax = 0;
+        double totalTax = 0;
+        double totalAfterTax = 0;
+        
+        // Display items organized by category
+        for (String category : categorizedOrder.keySet()) {
+            System.out.println("\n" + category.toUpperCase() + " ITEMS:");
+            Map<String, Integer> categoryItems = categorizedOrder.get(category);
+            double categorySubtotal = 0;
+            double categoryTax = 0;
+            
+            for (Map.Entry<String, Integer> entry : categoryItems.entrySet()) {
+                StoreItem item = findItem(entry.getKey());
+                if (item != null) {
+                    double itemTotal = item.getPrice() * entry.getValue();
+                    double itemTax;
+                    
+                    // Determine tax rate based on category
+                    if (category.equals("food")) {
+                        itemTax = itemTotal * FOOD_TAX_RATE;
+                    } else {
+                        itemTax = itemTotal * NON_FOOD_TAX_RATE;
+                    }
+                    
+                    System.out.printf("  %s x%d: $%.2f (Unit Price: $%.2f, Tax: $%.2f)\n", 
+                        entry.getKey(), entry.getValue(), itemTotal, item.getPrice(), itemTax);
+                    
+                    categorySubtotal += itemTotal;
+                    categoryTax += itemTax;
+                }
+            }
+            
+            // Display category subtotal and tax
+            System.out.printf("  Category Subtotal: $%.2f\n", categorySubtotal);
+            System.out.printf("  Category Tax: $%.2f\n", categoryTax);
+            
+            totalBeforeTax += categorySubtotal;
+            totalTax += categoryTax;
         }
 
+        // Calculate total after tax
+        totalAfterTax = totalBeforeTax + totalTax;
+
+        // Display totals
+        System.out.println("\n--- Total Summary ---");
+        System.out.printf("Subtotal: $%.2f\n", totalBeforeTax);
+        System.out.printf("Total Tax: $%.2f\n", totalTax);
+        System.out.printf("Total Order Value: $%.2f\n", totalAfterTax);
+
+        // Confirm checkout
         System.out.print("Confirm checkout? (yes/no): ");
         String confirm = scanner.nextLine();
 
         if (confirm.equalsIgnoreCase("yes")) {
-            for (Map.Entry<String, Integer> entry : order.entrySet()) {
-                StoreItem item = findItem(entry.getKey());
-                if (item != null) {
-                    item.setQuantity(item.getQuantity() - entry.getValue());
+            // Process checkout and reduce inventory
+            for (String category : categorizedOrder.keySet()) {
+                Map<String, Integer> categoryItems = categorizedOrder.get(category);
+                for (Map.Entry<String, Integer> entry : categoryItems.entrySet()) {
+                    StoreItem item = findItem(entry.getKey());
+                    if (item != null) {
+                        item.setQuantity(item.getQuantity() - entry.getValue());
+                    }
                 }
             }
-            System.out.println("Order completed!");
+            System.out.println("Order completed! Thank you for your purchase.");
         } else {
             System.out.println("Checkout canceled.");
         }
-        order.clear();
+        
+        // Clear the order
+        categorizedOrder.clear();
     }
 
     /**
